@@ -10,6 +10,7 @@
           {{ formatMessage(verifyEmailBannerMessages.action) }}
         </button>
       </template>
+
       <template v-else>
         <span>{{ formatMessage(addEmailBannerMessages.title) }}</span>
         <nuxt-link class="btn" to="/settings/account">
@@ -33,7 +34,9 @@
         {{ formatMessage(stagingBannerMessages.description) }}
       </div>
       <div class="site-banner__actions">
-        <Button transparent icon-only :action="hideStagingBanner"><XIcon /></Button>
+        <Button transparent icon-only :action="hideStagingBanner">
+          <XIcon />
+        </Button>
       </div>
     </div>
     <header class="site-header" role="presentation">
@@ -259,11 +262,13 @@
             <template v-if="auth.user">
               <SearchIcon />
             </template>
+
             <template v-else>
               <SearchIcon class="smaller" />
               {{ formatMessage(navMenuMessages.search) }}
             </template>
           </button>
+
           <template v-if="auth.user">
             <NuxtLink
               to="/dashboard/notifications"
@@ -298,6 +303,7 @@
               <HamburgerIcon v-if="!isMobileMenuOpen" />
               <CrossIcon v-else />
             </template>
+
             <template v-else>
               <Avatar
                 :src="auth.user.avatar_url"
@@ -410,6 +416,7 @@
     </footer>
   </div>
 </template>
+
 <script setup>
 import { LogInIcon, DownloadIcon, LibraryIcon, XIcon, IssuesIcon, Button } from 'omorphia'
 import HamburgerIcon from '~/assets/images/utils/hamburger.svg'
@@ -613,30 +620,30 @@ const isDropdownOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const isBrowseMenuOpen = ref(false)
 const navRoutes = computed(() => [
-  {
-    label: formatMessage(getProjectTypeMessage('mod', true)),
-    href: '/mods',
-  },
+  // {
+  //   label: formatMessage(getProjectTypeMessage('mod', true)),
+  //   href: '/mods',
+  // },
   {
     label: formatMessage(getProjectTypeMessage('plugin', true)),
     href: '/plugins',
   },
-  {
-    label: formatMessage(getProjectTypeMessage('datapack', true)),
-    href: '/datapacks',
-  },
-  {
-    label: formatMessage(getProjectTypeMessage('shader', true)),
-    href: '/shaders',
-  },
-  {
-    label: formatMessage(getProjectTypeMessage('resourcepack', true)),
-    href: '/resourcepacks',
-  },
-  {
-    label: formatMessage(getProjectTypeMessage('modpack', true)),
-    href: '/modpacks',
-  },
+  // {
+  //   label: formatMessage(getProjectTypeMessage('datapack', true)),
+  //   href: '/datapacks',
+  // },
+  // {
+  //   label: formatMessage(getProjectTypeMessage('shader', true)),
+  //   href: '/shaders',
+  // },
+  // {
+  //   label: formatMessage(getProjectTypeMessage('resourcepack', true)),
+  //   href: '/resourcepacks',
+  // },
+  // {
+  //   label: formatMessage(getProjectTypeMessage('modpack', true)),
+  //   href: '/modpacks',
+  // },
 ])
 
 onMounted(() => {
@@ -1066,6 +1073,7 @@ function hideStagingBanner() {
           @media screen and (min-width: 354px) {
             grid-template-columns: repeat(2, 1fr);
           }
+
           @media screen and (min-width: 674px) {
             grid-template-columns: repeat(3, 1fr);
           }
@@ -1423,4 +1431,5 @@ function hideStagingBanner() {
   }
 }
 </style>
+
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
