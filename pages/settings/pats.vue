@@ -74,7 +74,7 @@
 
     <div class="header__row">
       <div class="header__title">
-        <h2>{{ formatMessage(messages.title) }}</h2>
+        <h2>{{ formatMessage(commonSettingsMessages.pats) }}</h2>
       </div>
       <button
         class="btn btn-primary"
@@ -204,6 +204,7 @@
 <script setup>
 import { PlusIcon, XIcon, Checkbox, TrashIcon, EditIcon, SaveIcon, ConfirmModal } from 'omorphia'
 
+import { commonSettingsMessages } from '~/utils/common-messages.ts'
 import {
   hasScope,
   scopeList,
@@ -262,10 +263,6 @@ const deleteModalMessages = defineMessages({
 })
 
 const messages = defineMessages({
-  title: {
-    id: 'settings.pats.title',
-    defaultMessage: 'Personal access tokens',
-  },
   description: {
     id: 'settings.pats.description',
     defaultMessage:
@@ -309,7 +306,7 @@ definePageMeta({
 })
 
 useHead({
-  title: `${formatMessage(messages.title)} - Modrinth`,
+  title: `${formatMessage(commonSettingsMessages.pats)} - Modrinth`,
 })
 
 const data = useNuxtApp()

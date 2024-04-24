@@ -91,7 +91,7 @@
                   <NuxtLink class="item button-transparent" :to="`/user/${auth.user.username}`">
                     <div class="title profile-link">
                       <div class="username">@{{ auth.user.username }}</div>
-                      <div class="prompt">{{ formatMessage(messages.visitYourProfile) }}</div>
+                      <div class="prompt">{{ formatMessage(commonMessages.visitYourProfile) }}</div>
                     </div>
                   </NuxtLink>
                   <hr class="divider" />
@@ -202,7 +202,7 @@
               />
               <div class="account-text">
                 <div>@{{ auth.user.username }}</div>
-                <div>{{ formatMessage(messages.visitYourProfile) }}</div>
+                <div>{{ formatMessage(commonMessages.visitYourProfile) }}</div>
               </div>
             </NuxtLink>
             <nuxt-link v-else class="iconified-button brand-button" to="/auth/sign-in">
@@ -499,10 +499,6 @@ const navMenuMessages = defineMessages({
 })
 
 const messages = defineMessages({
-  visitYourProfile: {
-    id: 'layout.label.visit-your-profile',
-    defaultMessage: 'Visit your profile',
-  },
   toggleMenu: {
     id: 'layout.menu-toggle.action',
     defaultMessage: 'Toggle menu',
@@ -733,7 +729,9 @@ function toggleBrowseMenu() {
 }
 function changeTheme() {
   updateTheme(
-    DARK_THEMES.includes(app.$colorMode.value) ? 'light' : cosmetics.value.preferredDarkTheme,
+    DARK_THEMES.includes(app.$colorMode.value)
+      ? 'light'
+      : cosmetics.value.preferredDarkTheme ?? 'dark',
     true
   )
 }
