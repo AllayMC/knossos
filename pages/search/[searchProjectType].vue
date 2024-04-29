@@ -176,6 +176,7 @@
       </section>
     </aside>
     <section class="normal-page__content">
+      <LBPromotion></LBPromotion>
       <div class="card search-controls">
         <div class="search-filter-container">
           <button
@@ -318,6 +319,7 @@ import FilterIcon from '~/assets/images/utils/filter.svg'
 import GridIcon from '~/assets/images/utils/grid.svg'
 import ListIcon from '~/assets/images/utils/list.svg'
 import ImageIcon from '~/assets/images/utils/image.svg'
+import LBPromotion from '~/components/ui/LBPromotion.vue'
 
 const sidebarMenuOpen = ref(false)
 const showAllLoaders = ref(false)
@@ -352,7 +354,7 @@ const ogTitle = computed(
 )
 const description = computed(
   () =>
-    `Search and browse thousands of Minecraft ${projectType.value.display}s on Modrinth with instant, accurate search results. Our filters help you quickly find the best Minecraft ${projectType.value.display}s.`
+    `Search and browse thousands of Minecraft ${projectType.value.display}s on Bedrinth with instant, accurate search results. Our filters help you quickly find the best Minecraft ${projectType.value.display}s.`
 )
 
 const apiOptions = computed(

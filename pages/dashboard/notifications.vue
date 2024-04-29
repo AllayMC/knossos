@@ -54,7 +54,7 @@ import { Button, HistoryIcon } from 'omorphia'
 import {
   fetchExtraNotificationData,
   groupNotifications,
-  markAsRead,
+  markAsRead
 } from '~/helpers/notifications.js'
 import NotificationItem from '~/components/ui/NotificationItem.vue'
 import Chips from '~/components/ui/Chips.vue'
@@ -63,7 +63,7 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 import Pagination from '~/components/ui/Pagination.vue'
 
 useHead({
-  title: 'Notifications - Modrinth',
+  title: 'Notifications - Bedrinth'
 })
 
 const auth = await useAuth()

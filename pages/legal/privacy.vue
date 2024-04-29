@@ -5,13 +5,13 @@
 
     <h2>Introduction</h2>
     <p>
-      <a href="https://modrinth.com">Modrinth</a> is part of Rinth, Inc. ("Company", "us", "we",
+      <a href="https://bedrinth.com">Bedrinth</a> is part of Rinth, Inc. ("Company", "us", "we",
       "our"). This privacy policy explains how we collect data, process it, and your rights relative
       to your data.
     </p>
     <p>
       This policy describes the types of information we may collect from you or that you may provide
-      when you use www.modrinth.com, api.modrinth.com, or the Modrinth App ("Service" or "Website"),
+      when you use www.bedrinth.com, api.bedrinth.com, or the Bedrinth App ("Service" or "Website"),
       and our practices for collecting, using, maintaining, protecting, and disclosing that
       information.
     </p>
@@ -66,7 +66,7 @@
       </li>
     </ul>
 
-    <p>Rinth, Inc. is the data controller for data collected through Modrinth.</p>
+    <p>Rinth, Inc. is the data controller for data collected through Bedrinth.</p>
 
     <h2>What data do we collect?</h2>
 
@@ -85,7 +85,7 @@
     </p>
 
     <h3>View data and download data</h3>
-    <p>When you view a project page or download a file from Modrinth, we collect:</p>
+    <p>When you view a project page or download a file from Bedrinth, we collect:</p>
     <ul>
       <li>Your IP address</li>
       <li>Your user ID (if applicable)</li>
@@ -96,7 +96,7 @@
     <p>This data is used to monitor automated access to our service and deliver statistics.</p>
 
     <h3>Playtime data</h3>
-    <p>When you use the Modrinth App to play Modrinth projects, we collect:</p>
+    <p>When you use the Bedrinth App to play Bedrinth projects, we collect:</p>
     <ul>
       <li>Your IP address</li>
       <li>Your user ID</li>
@@ -109,7 +109,7 @@
     <p>This data is used to deliver statistics.</p>
 
     <h3>Usage data</h3>
-    <p>When you interact with the Modrinth App or the Website, we collect through MixPanel:</p>
+    <p>When you interact with the Bedrinth App or the Website, we collect through MixPanel:</p>
     <ul>
       <li>Your IP address</li>
       <li>Your anonymized user ID</li>
@@ -142,7 +142,7 @@
 
     <h2>Third-party services</h2>
     <p>
-      We use some third-party services to make Modrinth run. Please refer to each of their privacy
+      We use some third-party services to make Bedrinth run. Please refer to each of their privacy
       policies for more information:
     </p>
     <ul>
@@ -218,7 +218,7 @@
     </ul>
     <p>
       If you would like to exercise those rights, contact us at
-      <a href="mailto:gdpr@modrinth.com">gdpr@modrinth.com</a>. We may ask you to verify your
+      <a href="mailto:gdpr@bedrinth.com">gdpr@bedrinth.com</a>. We may ask you to verify your
       identity before proceeding and will respond to your request within 30 days as required by law,
       or notify you of an extended reply time.
     </p>
@@ -230,7 +230,7 @@
       online activity.
     </p>
     <p>
-      Modrinth does not knowingly collect any Personal Identifiable Information from children under
+      Bedrinth does not knowingly collect any Personal Identifiable Information from children under
       the age of 13. If you think that your child provided this kind of information on our website,
       we strongly encourage you to contact us immediately and we will do our best efforts to
       promptly remove such information from our records.
@@ -239,7 +239,7 @@
     <h2>Online Privacy Policy Only</h2>
     <p>
       This Privacy Policy applies only to our online activities and is valid for visitors to our
-      website with regards to the information that they shared and/or collect in Modrinth. This
+      website with regards to the information that they shared and/or collect in Bedrinth. This
       policy is not applicable to any information collected offline or via channels other than this
       website.
     </p>
@@ -261,7 +261,7 @@
       that are California residents to request certain information regarding our disclosure of
       personal information to third parties for their direct marketing purposes. To make such a
       request, please send an email to
-      <a href="mailto:support@modrinth.com">support@modrinth.com</a>.
+      <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>.
     </p>
 
     <h2>Changes to the Privacy Policy</h2>
@@ -276,44 +276,17 @@
     <h2>Contact</h2>
     <p>
       If you have any questions about this privacy policy or how we process your data, contact us at
-      <a href="mailto:gdpr@modrinth.com">gdpr@modrinth.com</a> or write us at:
-    </p>
-    <p>
-      Rinth, Inc.<br />
-      410 North Scottsdale Road<br />
-      Suite 1000<br />
-      Tempe, AZ 85281
-    </p>
-
-    <h3>How to contact the appropriate authority</h3>
-    <p>
-      Should you wish to fill a complaint or if you feel like we haven't addressed your concerns or
-      request, you may contact the
-      <a href="https://ico.org.uk/">Information Commissioner's Office</a>
-      using their online form or by writing at:
-    </p>
-    <p>
-      Information Commissioner's Office<br />
-      Wycliffe House<br />
-      Water Lane<br />
-      Wilmslow<br />
-      Cheshire<br />
-      SK9 5AF<br />
-      United Kingdom
-    </p>
-    <p>
-      You do not need to be a citizen of the United Kingdom to use this method of lodging
-      complaints.
+      <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>.
     </p>
   </div>
 </template>
 
 <script setup>
 const description =
-  'The Privacy Policy of Modrinth, an open source modding platform focused on Minecraft.'
+  'The Privacy Policy of Bedrinth, an open source modding platform focused on Minecraft.'
 
 useSeoMeta({
-  title: 'Privacy Policy - Modrinth',
+  title: 'Privacy Policy - Bedrinth',
   description,
   ogTitle: 'Privacy Policy',
   ogDescription: description,

@@ -160,12 +160,12 @@ const messages = defineMessages({
   },
   subscribeLabel: {
     id: 'auth.sign-up.subscribe.label',
-    defaultMessage: 'Subscribe to updates about Modrinth',
+    defaultMessage: 'Subscribe to updates about Bedrinth'
   },
   legalDisclaimer: {
     id: 'auth.sign-up.legal-dislaimer',
     defaultMessage:
-      "By creating an account, you agree to Modrinth's <terms-link>Terms</terms-link> and <privacy-policy-link>Privacy Policy</privacy-policy-link>.",
+      'By creating an account, you agree to Bedrinth\'s <terms-link>Terms</terms-link> and <privacy-policy-link>Privacy Policy</privacy-policy-link>.',
   },
   createAccountButton: {
     id: 'auth.sign-up.action.create-account',
@@ -178,7 +178,7 @@ const messages = defineMessages({
 })
 
 useHead({
-  title: () => `${formatMessage(messages.title)} - Modrinth`,
+  title: () => `${formatMessage(messages.title)} - Bedrinth`
 })
 
 const auth = await useAuth()

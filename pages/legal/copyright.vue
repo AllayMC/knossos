@@ -38,10 +38,7 @@
     </ul>
     <p>Our designated copyright agent to receive DMCA Notices is:</p>
     <p>
-      &emsp;Jai Agrawal<br />
-      &emsp;Rinth, Inc.<br />
-      &emsp;410 N Scottsdale Road, Suite 1000, Tempe, Arizona, 85281<br />
-      &emsp;<a href="mailto:support@modrinth.com">support@modrinth.com</a><br />
+      &emsp;<a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a><br />
     </p>
     <p>
       If you fail to comply with all of the requirements of Section 512(c)(3) of the DMCA, your DMCA
@@ -103,10 +100,10 @@
 
 <script setup>
 const description =
-  'The Copyright Policy of Modrinth, an open source modding platform focused on Minecraft.'
+  'The Copyright Policy of Bedrinth, an open source modding platform focused on Minecraft.'
 
 useSeoMeta({
-  title: 'Copyright Policy - Modrinth',
+  title: 'Copyright Policy - Bedrinth',
   description,
   ogTitle: 'Copyright Policy',
   ogDescription: description,

@@ -3,7 +3,7 @@
     <h1>Security Notice</h1>
 
     <p>
-      This is the security notice for all Modrinth repositories. The notice explains how
+      This is the security notice for all Bedrinth repositories. The notice explains how
       vulnerabilities should be reported.
     </p>
     <h2>Reporting a Vulnerability</h2>
@@ -13,7 +13,7 @@
       <strong>Do not open a GitHub issue for a found vulnerability</strong>.
     </p>
     <p>
-      Send details to <a href="mailto:jai@modrinth.com">jai@modrinth.com</a>
+      Send details to <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>
       including:
     </p>
     <ul>
@@ -54,10 +54,10 @@
 
 <script setup>
 const description =
-  'The Security Notice of Modrinth, an open source modding platform focused on Minecraft.'
+  'The Security Notice of Bedrinth, an open source modding platform focused on Minecraft.'
 
 useSeoMeta({
-  title: 'Security Notice - Modrinth',
+  title: 'Security Notice - Bedrinth',
   description,
   ogTitle: 'Security Notice',
   ogDescription: description,

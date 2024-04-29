@@ -9,7 +9,7 @@
     />
     <h2>{{ formatMessage(commonSettingsMessages.authorizedApps) }}</h2>
     <p>
-      When you authorize an application with your Modrinth account, you grant it access to your
+      When you authorize an application with your Bedrinth account, you grant it access to your
       account. You can manage and review access to your account here at any time.
     </p>
     <div v-if="appInfoLookup.length === 0" class="universal-card recessed">
@@ -88,7 +88,7 @@
   </div>
 </template>
 <script setup>
-import { Button, TrashIcon, CheckIcon, ConfirmModal, Avatar } from 'omorphia'
+import { Avatar, Button, CheckIcon, ConfirmModal, TrashIcon } from 'omorphia'
 import { commonSettingsMessages } from '~/utils/common-messages.ts'
 import { useScopes } from '~/composables/auth/scopes.ts'
 
@@ -103,7 +103,7 @@ definePageMeta({
 })
 
 useHead({
-  title: 'Authorizations - Modrinth',
+  title: 'Authorizations - Bedrinth'
 })
 
 const { data: usersApps, refresh } = await useAsyncData('userAuthorizations', () =>

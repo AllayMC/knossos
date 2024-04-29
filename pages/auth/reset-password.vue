@@ -72,7 +72,7 @@
   </div>
 </template>
 <script setup>
-import { SendIcon, MailIcon, KeyIcon } from 'omorphia'
+import { KeyIcon, MailIcon, SendIcon } from 'omorphia'
 
 const { formatMessage } = useVIntl()
 
@@ -149,7 +149,7 @@ const messages = defineMessages({
 })
 
 useHead({
-  title: () => `${formatMessage(messages.title)} - Modrinth`,
+  title: () => `${formatMessage(messages.title)} - Bedrinth`
 })
 
 const auth = await useAuth()

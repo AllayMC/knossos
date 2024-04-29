@@ -57,7 +57,7 @@ export default defineNuxtConfig({
         ...preloadedFonts.map((font): object => {
           return {
             rel: 'preload',
-            href: `https://cdn-raw.modrinth.com/fonts/${font}?v=3.19`,
+            href: `https://cdn-raw.bedrinth.com/fonts/${font}?v=3.19`,
             as: 'font',
             type: 'font/woff2',
             crossorigin: 'anonymous'
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
           rel: 'search',
           type: 'application/opensearchdescription+xml',
           href: '/opensearch.xml',
-          title: 'Modrinth mods'
+          title: 'Bedrinth mods'
         }
       ]
     }
@@ -191,7 +191,7 @@ export default defineNuxtConfig({
     async 'vintl:extendOptions'(opts) {
       opts.locales ??= []
 
-      const isProduction = getDomain() === 'https://modrinth.com'
+      const isProduction = getDomain() === 'https://bedrinth.com'
 
       const resolveCompactNumberDataImport = await (async () => {
         const compactNumberLocales: string[] = []

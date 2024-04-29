@@ -117,15 +117,15 @@
 
 <script setup>
 import {
-  RightArrowIcon,
-  SSOGitHubIcon,
-  SSOMicrosoftIcon,
-  SSOSteamIcon,
-  SSOGoogleIcon,
-  SSODiscordIcon,
-  SSOGitLabIcon,
   KeyIcon,
   MailIcon,
+  RightArrowIcon,
+  SSODiscordIcon,
+  SSOGitHubIcon,
+  SSOGitLabIcon,
+  SSOGoogleIcon,
+  SSOMicrosoftIcon,
+  SSOSteamIcon
 } from 'omorphia'
 
 const { formatMessage } = useVIntl()
@@ -172,7 +172,7 @@ const messages = defineMessages({
 
 useHead({
   title() {
-    return `${formatMessage(messages.signInTitle)} - Modrinth`
+    return `${formatMessage(messages.signInTitle)} - Bedrinth`
   },
 })
 

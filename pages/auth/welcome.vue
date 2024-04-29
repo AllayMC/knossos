@@ -43,12 +43,12 @@ const { formatMessage } = useVIntl()
 const messages = defineMessages({
   subscribeCheckbox: {
     id: 'auth.welcome.checkbox.subscribe',
-    defaultMessage: 'Subscribe to updates about Modrinth',
+    defaultMessage: 'Subscribe to updates about Bedrinth'
   },
   tosLabel: {
     id: 'auth.welcome.label.tos',
     defaultMessage:
-      "By creating an account, you have agreed to Modrinth's <terms-link>Terms</terms-link> and <privacy-policy-link>Privacy Policy</privacy-policy-link>.",
+      'By creating an account, you have agreed to Bedrinth\'s <terms-link>Terms</terms-link> and <privacy-policy-link>Privacy Policy</privacy-policy-link>.',
   },
   welcomeDescription: {
     id: 'auth.welcome.description',
@@ -57,7 +57,7 @@ const messages = defineMessages({
   },
   welcomeLongTitle: {
     id: 'auth.welcome.long-title',
-    defaultMessage: 'Welcome to Modrinth!',
+    defaultMessage: 'Welcome to Bedrinth!'
   },
   welcomeTitle: {
     id: 'auth.welcome.title',
@@ -66,7 +66,7 @@ const messages = defineMessages({
 })
 
 useHead({
-  title: () => `${formatMessage(messages.welcomeTitle)} - Modrinth`,
+  title: () => `${formatMessage(messages.welcomeTitle)} - Bedrinth`
 })
 
 const subscribe = ref(true)

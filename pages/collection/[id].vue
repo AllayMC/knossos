@@ -249,7 +249,7 @@
         </div>
       </div>
       <div class="normal-page__content">
-        <Promotion />
+        <LBPromotion />
 
         <nav class="navigation-card">
           <NavRow
@@ -365,25 +365,24 @@
 <script setup>
 import {
   Avatar,
+  BoxIcon,
   Button,
   CalendarIcon,
-  Promotion,
-  EditIcon,
-  XIcon,
-  SaveIcon,
-  UploadIcon,
-  TrashIcon,
-  PopoutMenu,
-  FileInput,
   DropdownSelect,
-  LinkIcon,
-  LockIcon,
+  EditIcon,
+  FileInput,
   GridIcon,
   ImageIcon,
-  ListIcon,
-  UpdatedIcon,
   LibraryIcon,
-  BoxIcon,
+  LinkIcon,
+  ListIcon,
+  LockIcon,
+  PopoutMenu,
+  SaveIcon,
+  TrashIcon,
+  UpdatedIcon,
+  UploadIcon,
+  XIcon
 } from 'omorphia'
 
 import WorldIcon from 'assets/images/utils/world.svg'
@@ -392,6 +391,7 @@ import { addNotification } from '~/composables/notifs.js'
 import ModalConfirm from '~/components/ui/ModalConfirm.vue'
 import NavRow from '~/components/ui/NavRow.vue'
 import ProjectCard from '~/components/ui/ProjectCard.vue'
+import LBPromotion from '~/components/ui/LBPromotion.vue'
 
 const vintl = useVIntl()
 const { formatMessage } = vintl
@@ -401,7 +401,7 @@ const formatCompactNumber = useCompactNumber()
 const messages = defineMessages({
   collectionDescription: {
     id: 'collection.description',
-    defaultMessage: '{description} - View the collection {name} by {username} on Modrinth',
+    defaultMessage: '{description} - View the collection {name} by {username} on Bedrinth'
   },
   collectionLabel: {
     id: 'collection.label.collection',

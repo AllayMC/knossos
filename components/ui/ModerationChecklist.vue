@@ -331,16 +331,16 @@
 
 <script setup>
 import {
+  CheckIcon,
+  DropdownIcon,
+  ExitIcon,
+  EyeOffIcon,
   LeftArrowIcon,
   MarkdownEditor,
+  OverflowMenu,
   RightArrowIcon,
   UpdatedIcon,
-  CheckIcon,
-  OverflowMenu,
-  DropdownIcon,
-  XIcon as CrossIcon,
-  EyeOffIcon,
-  ExitIcon,
+  XIcon as CrossIcon
 } from 'omorphia'
 import Categories from '~/components/ui/search/Categories.vue'
 
@@ -383,7 +383,7 @@ const steps = computed(() =>
         {
           name: 'Contains useless info',
           resultingMessage: `## Misuse of Title
-Per section 5.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) we ask that you limit the title to just the name of your project. Additional information, such as themes, tags, supported versions or loaders, etc. should be saved for the Summary or Description. When changing your project title, remember to also ensure that your project slug (URL) matches and accurately represents your project.`,
+Per section 5.2 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) we ask that you limit the title to just the name of your project. Additional information, such as themes, tags, supported versions or loaders, etc. should be saved for the Summary or Description. When changing your project title, remember to also ensure that your project slug (URL) matches and accurately represents your project.`,
         },
       ],
     },
@@ -396,7 +396,7 @@ Per section 5.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#m
         {
           name: 'Misused',
           resultingMessage: `## Misuse of Slug
-Per section 5.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) your project slug (URL) must accurately represent your project. `,
+Per section 5.2 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) your project slug (URL) must accurately represent your project. `,
         },
       ],
     },
@@ -413,19 +413,19 @@ Per section 5.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#m
         {
           name: 'Insufficient',
           resultingMessage: `## Insufficient Summary
-Per section 5.3 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) Your project summary should provide a brief overview of your project that informs and entices users.
+Per section 5.3 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) Your project summary should provide a brief overview of your project that informs and entices users.
 This is the first thing most people will see about your mod other than the Logo, so it's important it be accurate, reasonably detailed, and exciting.`,
         },
         {
           name: 'Repeat of title',
           resultingMessage: `## Insufficient Summary
-Per section 5.3 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) your Summary can not be the same as your project's Title. Your project summary should provide a brief overview of your project that informs and entices users.
+Per section 5.3 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) your Summary can not be the same as your project's Title. Your project summary should provide a brief overview of your project that informs and entices users.
 This is the first thing most people will see about your mod other than the Logo, so it's important it be accurate, reasonably detailed, and exciting.`,
         },
         {
           name: 'Formatting',
           resultingMessage: `## Insufficient Summary
-Per section 5.3 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) your Summary can not include any extra formatting such as lists, or links. Your project summary should provide a brief overview of your project that informs and entices users.
+Per section 5.3 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) your Summary can not include any extra formatting such as lists, or links. Your project summary should provide a brief overview of your project that informs and entices users.
 This is the first thing most people will see about your mod other than the Logo, so it's important it be accurate, reasonably detailed, and exciting.`,
         },
       ],
@@ -445,7 +445,7 @@ This is the first thing most people will see about your mod other than the Logo,
         {
           name: 'Insufficient',
           resultingMessage: `## Insufficient Description
-Per section 2.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#general-expectations) your project's Description should clearly inform the reader of the content, purpose, and appeal of your project.
+Per section 2.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#general-expectations) your project's Description should clearly inform the reader of the content, purpose, and appeal of your project.
 Currently, it looks like there are some missing details.
 %EXPLAINER%`,
           fillers: [
@@ -459,46 +459,46 @@ Currently, it looks like there are some missing details.
         {
           name: 'Insufficient (default packs)',
           resultingMessage: `## Insufficient Description
-Per section 2.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#general-expectations) your project's Description should clearly inform the reader of the content, purpose, and appeal of your project.
+Per section 2.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#general-expectations) your project's Description should clearly inform the reader of the content, purpose, and appeal of your project.
 Currently, it looks like there are some missing details.
 What does your modpack add? What features does it have? Why would a user want to download it? Be specific!
-See descriptions like [Simply Optimized](https://modrinth.com/modpack/sop) or [Aged](https://modrinth.com/modpack/aged) for examples of what a good description looks like.
+See descriptions like [Simply Optimized](https://bedrinth.com/modpack/sop) or [Aged](https://bedrinth.com/modpack/aged) for examples of what a good description looks like.
 `,
         },
         {
           name: 'Insufficient (default projects)',
           resultingMessage: `## Insufficient Description
-Per section 2.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#general-expectations) your project's Description should clearly inform the reader of the content, purpose, and appeal of your project.
+Per section 2.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#general-expectations) your project's Description should clearly inform the reader of the content, purpose, and appeal of your project.
 Currently, it looks like there are some missing details.
 What does your project add? What features does it have? Why would a user want to download it? Be specific!
-See descriptions like [Sodium](https://modrinth.com/mod/sodium) or [LambDynamicLights](https://modrinth.com/mod/lambdynamiclights) for examples of what a good description looks like.
+See descriptions like [Sodium](https://bedrinth.com/mod/sodium) or [LambDynamicLights](https://bedrinth.com/mod/lambdynamiclights) for examples of what a good description looks like.
 `,
         },
         {
           name: 'Non-english',
           resultingMessage: `## No English Description
-Per section 2.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#accessibility) a project's Summary and Description must be in English, unless meant exclusively for non-English use, such as translations.  You may include your non-English Description if you would like but we ask that you also add an English translation of the Description to your Description page, if you would like to use an online translator to do this, we recommend [DeepL](https://www.deepl.com/translator).`,
+Per section 2.2 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#accessibility) a project's Summary and Description must be in English, unless meant exclusively for non-English use, such as translations.  You may include your non-English Description if you would like but we ask that you also add an English translation of the Description to your Description page, if you would like to use an online translator to do this, we recommend [DeepL](https://www.deepl.com/translator).`,
         },
         {
           name: 'Unfinished',
           resultingMessage: `## Unfinished Description
-It looks like your project Description is still a WIP seeing as %REASON%. Please remember to submit only when ready, as it is important your project meets the requirements of Section 2.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#general-expectations), if you have any questions on this feel free to reach out!`,
+It looks like your project Description is still a WIP seeing as %REASON%. Please remember to submit only when ready, as it is important your project meets the requirements of Section 2.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#general-expectations), if you have any questions on this feel free to reach out!`,
         },
         {
           name: 'Headers as body text',
           resultingMessage: `## Description Accessibility
-In accordance with section 2.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules) we request that \`# header\`s not be used as body text. Headers are interpreted differently by screen-readers and thus should generally only be used for things like separating sections of your Description. If you would like to emphasize a particular sentence or paragraph, instead consider using \`**bold**\` text using the **B** button above the text editor.`,
+In accordance with section 2.2 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules) we request that \`# header\`s not be used as body text. Headers are interpreted differently by screen-readers and thus should generally only be used for things like separating sections of your Description. If you would like to emphasize a particular sentence or paragraph, instead consider using \`**bold**\` text using the **B** button above the text editor.`,
         },
         {
           name: 'Image-only',
           resultingMessage: `## Image Descriptions
-In accordance with section 2.2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules) we ask that you provide a text alternative to your current Description. It is important that your Description contains enough detail about your project that a user can have a full understanding of it from text alone. A text-based transcription allows for those using screen readers, and users with slow internet connections unable to load images to be able to access the contents of your Description. This also acts as a backup in case the image in your Description ever goes offline for some reason.
-We appreciate how much effort you put into your Description, but accessibility is important to us at Modrinth, if you would like you could put the transcription of your Description entirely in a \`details\` tag, so as to not spoil the visuals of your Description.`,
+In accordance with section 2.2 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules) we ask that you provide a text alternative to your current Description. It is important that your Description contains enough detail about your project that a user can have a full understanding of it from text alone. A text-based transcription allows for those using screen readers, and users with slow internet connections unable to load images to be able to access the contents of your Description. This also acts as a backup in case the image in your Description ever goes offline for some reason.
+We appreciate how much effort you put into your Description, but accessibility is important to us at Bedrinth, if you would like you could put the transcription of your Description entirely in a \`details\` tag, so as to not spoil the visuals of your Description.`,
         },
         {
           name: 'Non-standard text',
           resultingMessage: `## Description Accessibility
-Per section 2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#clear-and-honest-function) your description must be plainly readable and accessible. Using non-standard text characters like Zalgo or "fancy text" in place of text anywhere in your project, including the Description, Summary, or Title can make your project pages inaccessible. This is important for users who rely on Screen Readers and for search engines in order to provide relevant results to users. Please remove any instances of this type of text.`,
+Per section 2 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#clear-and-honest-function) your description must be plainly readable and accessible. Using non-standard text characters like Zalgo or "fancy text" in place of text anywhere in your project, including the Description, Summary, or Title can make your project pages inaccessible. This is important for users who rely on Screen Readers and for search engines in order to provide relevant results to users. Please remove any instances of this type of text.`,
         },
       ],
     },
@@ -519,18 +519,18 @@ Per section 2 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#cle
         {
           name: 'Links are misused',
           resultingMessage: `## Misuse of External Resources
-Per section 5.4 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) all links must lead to correctly labeled publicly available resources that are directly related to your project.`,
+Per section 5.4 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) all links must lead to correctly labeled publicly available resources that are directly related to your project.`,
         },
         {
           name: 'Not accessible (source)',
           resultingMessage: `## Unreachable Links
-Per section 5.4 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) all links must lead to correctly labeled publicly available resources that are directly related to your project.
+Per section 5.4 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) all links must lead to correctly labeled publicly available resources that are directly related to your project.
 Currently, your Source link directs to a Page Not Found error, likely because your repository is private, make sure to make your repository public before resubmitting your project!`,
         },
         {
           name: 'Not accessible (other)',
           resultingMessage: `## Unreachable Links
-Per section 5.4 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) all links must lead to correctly labeled publicly available resources that are directly related to your project.
+Per section 5.4 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) all links must lead to correctly labeled publicly available resources that are directly related to your project.
 Currently, your %LINK% link is inaccessible!`,
           fillers: [
             {
@@ -549,7 +549,7 @@ Currently, your %LINK% link is inaccessible!`,
         {
           name: 'Inaccurate',
           resultingMessage: `## Misuse of Tags
-Per section 5.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous), it is important that the metadata of your projects is accurate. Including that selected tags honestly represent your project.`,
+Per section 5.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous), it is important that the metadata of your projects is accurate. Including that selected tags honestly represent your project.`,
         },
       ],
     },
@@ -561,20 +561,20 @@ Per section 5.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#m
         {
           name: 'Inaccurate (modpack)',
           resultingMessage: `## Incorrect Environment Information
-Per section 5.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous), it is important that the metadata of your projects is accurate, including whether the project runs on the client or server side.
+Per section 5.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous), it is important that the metadata of your projects is accurate, including whether the project runs on the client or server side.
 For a brief rundown of how this works:
-Some modpacks can be client-side, usually aimed at providing utility and optimization while allowing the player to join an unmodded server, for instance, [Fabulously Optimized](https://modrinth.com/modpack/fabulously-optimized).
-Most other modpacks that change how the game is played are going to be required on both the client and server, like the modpack [Dying Light](https://modrinth.com/modpack/dying-light).
+Some modpacks can be client-side, usually aimed at providing utility and optimization while allowing the player to join an unmodded server, for instance, [Fabulously Optimized](https://bedrinth.com/modpack/fabulously-optimized).
+Most other modpacks that change how the game is played are going to be required on both the client and server, like the modpack [Dying Light](https://bedrinth.com/modpack/dying-light).
 When in doubt, test for yourself or check the requirements of the mods in your pack.`,
         },
         {
           name: 'Inaccurate (mod)',
           resultingMessage: `## Environment Information
-Per section 5.1 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous), it is important that the metadata of your projects is accurate, including whether the project runs on the client or server side.
+Per section 5.1 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous), it is important that the metadata of your projects is accurate, including whether the project runs on the client or server side.
 For a brief rundown of how this works:
-**Client side** refers to a mod that is only required by the client, like [Sodium](https://modrinth.com/mod/sodium).
-**Server side** mods change the behavior of the server without the client needing the mod, like Datapacks, recipes, or server-side behaviors, like [Falling Tree](https://modrinth.com/mod/fallingtree).
-A mod that adds features, entities, or new blocks and items, generally will be required on **both** the server and the client, for example [Cobblemon](https://modrinth.com/mod/cobblemon).`,
+**Client side** refers to a mod that is only required by the client, like [Sodium](https://bedrinth.com/mod/sodium).
+**Server side** mods change the behavior of the server without the client needing the mod, like Datapacks, recipes, or server-side behaviors, like [Falling Tree](https://bedrinth.com/mod/fallingtree).
+A mod that adds features, entities, or new blocks and items, generally will be required on **both** the server and the client, for example [Cobblemon](https://bedrinth.com/mod/cobblemon).`,
         },
       ],
     },
@@ -587,7 +587,7 @@ A mod that adds features, entities, or new blocks and items, generally will be r
         {
           name: 'Not relevant',
           resultingMessage: `## Unrelated Gallery Images
-Per section 5.5 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) any images in your project's Gallery must be relevant to the project and also include a Title.`,
+Per section 5.5 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) any images in your project's Gallery must be relevant to the project and also include a Title.`,
         },
       ],
     },
@@ -604,17 +604,17 @@ Per section 5.5 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#m
         {
           name: 'Incorrect additional files',
           resultingMessage: `## Incorrect Use of Additional Files
-It looks like you've uploaded multiple \`mod.jar\` files to one Version as Additional Files. Per section 5.7 of [Modrinth's Content Rules](https://modrinth.com/legal/rules#miscellaneous) each Version of your project must include only one \`mod.jar\` that corresponds to its respective Minecraft and loader versions. This allows users to easily find and download the file they need for the version they're on with ease. The Additional Files feature can be used for things like a \`Sources.jar\`.
+It looks like you've uploaded multiple \`mod.jar\` files to one Version as Additional Files. Per section 5.7 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules#miscellaneous) each Version of your project must include only one \`mod.jar\` that corresponds to its respective Minecraft and loader versions. This allows users to easily find and download the file they need for the version they're on with ease. The Additional Files feature can be used for things like a \`Sources.jar\`.
 Please upload each version of your mod separately, thank you.`,
         },
         {
           name: 'Invalid file type (modpacks)',
-          resultingMessage: `## Modpacks on Modrinth
-It looks like you've uploaded your Modpack as a \`.zip\`, unfortunately, this is invalid and is why your project type is "Mod". I recommend taking a look at our support page about [Modrinth Modpacks](https://support.modrinth.com/en/articles/8802250-modpacks-on-modrinth), and once you're ready feel free to resubmit your project as a \`.mrpack\`. Don't forget to delete the old files from your Versions!`,
+          resultingMessage: `## Modpacks on Bedrinth
+It looks like you've uploaded your Modpack as a \`.zip\`, unfortunately, this is invalid and is why your project type is "Mod". I recommend taking a look at our support page about [Bedrinth Modpacks](https://support.bedrinth.com/en/articles/8802250-modpacks-on-bedrinth), and once you're ready feel free to resubmit your project as a \`.mrpack\`. Don't forget to delete the old files from your Versions!`
         },
         {
           name: 'Invalid file type (resourcepacks)',
-          resultingMessage: `## Resource Packs on Modrinth
+          resultingMessage: `## Resource Packs on Bedrinth
 It looks like you've selected loaders for your Resource Pack that are causing it to be marked as a different project type. Resource Packs must only be uploaded with the "Resource Pack" loader selected. Please re-upload all versions of your resource pack and make sure to only select "Resource Pack" as the loader.`,
         },
       ],
@@ -632,7 +632,7 @@ It looks like you've selected loaders for your Resource Pack that are causing it
           name: 'Re-upload',
           resultingMessage: `## Reuploads are forbidden
 This project appears to contain content from %ORIGINAL_PROJECT% by %ORIGINAL_AUTHOR%.
-Per section 4 of [Modrinth's Content Rules](https://modrinth.com/legal/rules) this is strictly forbidden.
+Per section 4 of [Bedrinth's Content Rules](https://bedrinth.com/legal/rules) this is strictly forbidden.
 If you believe this is an error, or you can verify you are the creator and rightful owner of this content please let us know. Otherwise, we ask that you **do not resubmit this project**.`,
           fillers: [
             {
@@ -924,11 +924,11 @@ async function generateMessage() {
       )
       printMods(
         noMods,
-        'The following content is not allowed in Modrinth modpacks due to licensing restrictions. Please contact the author(s) directly for permission or remove the content from your modpack:'
+        'The following content is not allowed in Bedrinth modpacks due to licensing restrictions. Please contact the author(s) directly for permission or remove the content from your modpack:'
       )
       printMods(
         permanentNoMods,
-        "The following content is not allowed in Modrinth modpacks, regardless of permission obtained. This may be because it breaks Modrinth's content rules or because the authors, upon being contacted for permission, have declined. Please remove the content from your modpack:"
+        'The following content is not allowed in Bedrinth modpacks, regardless of permission obtained. This may be because it breaks Bedrinth\'s content rules or because the authors, upon being contacted for permission, have declined. Please remove the content from your modpack:'
       )
       printMods(
         unidentifiedMods,

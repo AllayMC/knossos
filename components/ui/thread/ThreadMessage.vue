@@ -37,7 +37,7 @@
         <ScaleIcon v-if="members[message.author_id].role === 'moderator'" v-tooltip="'Moderator'" />
         <ModrinthIcon
           v-else-if="members[message.author_id].role === 'admin'"
-          v-tooltip="'Modrinth Team'"
+          v-tooltip="'Bedrinth Team'"
         />
         <MicrophoneIcon
           v-if="report && message.author_id === report.reporterUser.id"
@@ -100,15 +100,15 @@
 
 <script setup>
 import {
-  OverflowMenu,
-  MoreHorizontalIcon,
-  TrashIcon,
   ConditionalNuxtLink,
-  MicrophoneIcon,
   LockIcon,
+  MicrophoneIcon,
   ModrinthIcon,
-  ScaleIcon,
+  MoreHorizontalIcon,
+  OverflowMenu,
   renderString,
+  ScaleIcon,
+  TrashIcon
 } from 'omorphia'
 import Avatar from '~/components/ui/Avatar.vue'
 import Badge from '~/components/ui/Badge.vue'

@@ -3,7 +3,7 @@
     <ModalConfirm
       ref="modal_confirm"
       title="Are you sure you want to delete your account?"
-      description="This will **immediately delete all of your user data and follows**. This will not delete your projects. Deleting your account cannot be reversed.<br><br>If you need help with your account, get support on the [Modrinth Discord](https://discord.modrinth.com)."
+      description="This will **immediately delete all of your user data and follows**. This will not delete your projects. Deleting your account cannot be reversed.<br><br>If you need help with your account, get support on the [PowerNukkitX Discord](https://discord.com/invite/XXus4FB6qf)."
       proceed-label="Delete this account"
       :confirmation-text="auth.user.username"
       :has-to-type="true"
@@ -180,7 +180,7 @@
               v-if="twoFactorSecret"
               :value="`otpauth://totp/${encodeURIComponent(
                 auth.user.email
-              )}?secret=${twoFactorSecret}&issuer=Modrinth`"
+              )}?secret=${twoFactorSecret}&issuer=Bedrinth`"
               :size="250"
               :margin="2"
               level="H"
@@ -391,17 +391,16 @@
 
 <script setup>
 import {
-  EditIcon,
-  UserIcon,
-  SaveIcon,
-  TrashIcon,
-  PlusIcon,
-  SettingsIcon,
-  XIcon,
-  LeftArrowIcon,
-  RightArrowIcon,
   CheckIcon,
+  EditIcon,
   ExternalIcon,
+  LeftArrowIcon,
+  PlusIcon,
+  RightArrowIcon,
+  SaveIcon,
+  SettingsIcon,
+  TrashIcon,
+  XIcon
 } from 'omorphia'
 import QrcodeVue from 'qrcode.vue'
 import GitHubIcon from 'assets/icons/auth/sso-github.svg'
@@ -415,7 +414,7 @@ import ModalConfirm from '~/components/ui/ModalConfirm.vue'
 import Modal from '~/components/ui/Modal.vue'
 
 useHead({
-  title: 'Account settings - Modrinth',
+  title: 'Account settings - Bedrinth'
 })
 
 definePageMeta({

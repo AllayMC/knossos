@@ -88,7 +88,7 @@
   </div>
 </template>
 <script setup>
-import { Avatar, BoxIcon, SearchIcon, XIcon, Button, PlusIcon, LinkIcon, LockIcon } from 'omorphia'
+import { Avatar, BoxIcon, Button, LinkIcon, LockIcon, PlusIcon, SearchIcon, XIcon } from 'omorphia'
 import WorldIcon from '~/assets/images/utils/world.svg'
 import CollectionCreateModal from '~/components/ui/CollectionCreateModal.vue'
 
@@ -123,7 +123,7 @@ definePageMeta({
 })
 
 useHead({
-  title: () => `${formatMessage(messages.collectionsLongTitle)} - Modrinth`,
+  title: () => `${formatMessage(messages.collectionsLongTitle)} - Bedrinth`
 })
 
 const user = await useUser()

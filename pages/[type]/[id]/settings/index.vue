@@ -66,7 +66,7 @@
       </label>
       <div class="text-input-wrapper">
         <div class="text-input-wrapper__before">
-          https://modrinth.com/{{ $getProjectTypeForUrl(project.project_type, project.loaders) }}/
+          https://bedrinth.com/{{ $getProjectTypeForUrl(project.project_type, project.loaders) }}/
         </div>
         <input
           id="project-slug"
@@ -224,7 +224,7 @@
         </h3>
       </div>
       <p>
-        Removes your project from Modrinth's servers and search. Clicking on this will delete your
+        Removes your project from Bedrinth's servers and search. Clicking on this will delete your
         project, so be extra careful!
       </p>
       <button

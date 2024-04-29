@@ -202,15 +202,15 @@
   </div>
 </template>
 <script setup>
-import { PlusIcon, XIcon, Checkbox, TrashIcon, EditIcon, SaveIcon, ConfirmModal } from 'omorphia'
+import { Checkbox, ConfirmModal, EditIcon, PlusIcon, SaveIcon, TrashIcon, XIcon } from 'omorphia'
 
 import { commonSettingsMessages } from '~/utils/common-messages.ts'
 import {
+  getScopeValue,
   hasScope,
   scopeList,
   toggleScope,
-  useScopes,
-  getScopeValue,
+  useScopes
 } from '~/composables/auth/scopes.ts'
 
 import CopyCode from '~/components/ui/CopyCode.vue'
@@ -266,7 +266,7 @@ const messages = defineMessages({
   description: {
     id: 'settings.pats.description',
     defaultMessage:
-      "PATs can be used to access Modrinth's API. For more information, see <doc-link>Modrinth's API documentation</doc-link>. They can be created and revoked at any time.",
+      'PATs can be used to access Bedrinth\'s API. For more information, see <doc-link>Bedrinth\'s API documentation</doc-link>. They can be created and revoked at any time.',
   },
   create: {
     id: 'settings.pats.action.create',
@@ -306,7 +306,7 @@ definePageMeta({
 })
 
 useHead({
-  title: `${formatMessage(commonSettingsMessages.pats)} - Modrinth`,
+  title: `${formatMessage(commonSettingsMessages.pats)} - Bedrinth`
 })
 
 const data = useNuxtApp()

@@ -33,7 +33,7 @@
         </NuxtLink>
       </div>
       <p>
-        By uploading projects to Modrinth and withdrawing money from your account, you agree to the
+        By uploading projects to Bedrinth and withdrawing money from your account, you agree to the
         <nuxt-link to="/legal/cmp" class="text-link">Rewards Program Terms</nuxt-link>. For more
         information on how the rewards system works, see our information page
         <nuxt-link to="/legal/cmp-info" class="text-link">here</nuxt-link>.
@@ -61,7 +61,7 @@
       </template>
       <h3>Tremendous</h3>
       <p>
-        Tremendous payments are sent to your Modrinth email. To change/set your Modrinth email,
+        Tremendous payments are sent to your Bedrinth email. To change/set your Bedrinth email,
         visit
         <nuxt-link to="/settings/account" class="text-link">here</nuxt-link>.
       </p>

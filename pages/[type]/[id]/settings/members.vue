@@ -17,7 +17,7 @@
       <span class="label">
         <span class="label__title">Invite a member</span>
         <span class="label__description">
-          Enter the Modrinth username of the person you'd like to invite to be a member of this
+          Enter the Bedrinth username of the person you'd like to invite to be a member of this
           project.
         </span>
       </span>
@@ -518,7 +518,7 @@
 
 <script setup>
 import { Multiselect } from 'vue-multiselect'
-import { Avatar, Badge, Card, Checkbox, TransferIcon, CheckIcon, UsersIcon } from 'omorphia'
+import { Avatar, Badge, Card, Checkbox, CheckIcon, TransferIcon, UsersIcon } from 'omorphia'
 import { defineProps, ref, watch } from 'vue'
 
 import ModalConfirm from '~/components/ui/ModalConfirm.vue'

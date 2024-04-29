@@ -874,7 +874,7 @@ export default defineNuxtComponent({
       () =>
         `Download ${props.project.title} ${
           version.version_number
-        } on Modrinth. Supports ${data.$formatVersion(getArrayGameVersion())} ${getArrayLoaders()
+        } on Bedrinth. Supports ${data.$formatVersion(getArrayGameVersion())} ${getArrayLoaders()
           .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
           .join(' & ')}. Published on ${data
           .$dayjs(version.date_published)

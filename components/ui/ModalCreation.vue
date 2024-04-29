@@ -20,7 +20,7 @@
         <span class="label__title">URL<span class="required">*</span></span>
       </label>
       <div class="text-input-wrapper">
-        <div class="text-input-wrapper__before">https://modrinth.com/project/</div>
+        <div class="text-input-wrapper__before">https://bedrinth.com/project/</div>
         <input
           id="slug"
           v-model="slug"

@@ -129,7 +129,7 @@
     </div>
     <div v-if="!routeHasSettings" class="normal-page__content">
       <ModalCreation ref="modal_creation" :organization-id="organization.id" />
-      <Promotion />
+      <LBPromotion />
       <div v-if="isInvited" class="universal-card information invited">
         <h2>Invitation to join {{ organization.name }}</h2>
         <p>You have been invited to join {{ organization.name }}.</p>
@@ -223,13 +223,12 @@ import {
   Avatar,
   BoxIcon,
   Breadcrumbs,
+  ChartIcon,
+  CheckIcon,
+  SettingsIcon,
   UserIcon,
   UsersIcon,
-  SettingsIcon,
-  ChartIcon,
-  Promotion,
-  CheckIcon,
-  XIcon,
+  XIcon
 } from 'omorphia'
 import NavStack from '~/components/ui/NavStack.vue'
 import NavStackItem from '~/components/ui/NavStackItem.vue'
@@ -242,6 +241,7 @@ import OrganizationIcon from '~/assets/images/utils/organization.svg'
 import DownloadIcon from '~/assets/images/utils/download.svg'
 import CrownIcon from '~/assets/images/utils/crown.svg'
 import { acceptTeamInvite, removeTeamMember } from '~/helpers/teams.js'
+import LBPromotion from '~/components/ui/LBPromotion.vue'
 
 const vintl = useVIntl()
 const { formatMessage } = vintl
@@ -439,7 +439,7 @@ provide('organizationContext', {
 })
 
 const title = `${organization.value.name} - Organization`
-const description = `${organization.value.description} - View the organization ${organization.value.name} on Modrinth`
+const description = `${organization.value.description} - View the organization ${organization.value.name} on Bedrinth`
 
 useSeoMeta({
   title,

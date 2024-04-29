@@ -74,13 +74,13 @@
 </template>
 <script setup>
 import {
-  ServerIcon,
   GridIcon,
-  PaintBrushIcon,
-  UserIcon,
-  ShieldIcon,
   KeyIcon,
   LanguagesIcon,
+  PaintBrushIcon,
+  ServerIcon,
+  ShieldIcon,
+  UserIcon
 } from 'omorphia'
 import NavStack from '~/components/ui/NavStack.vue'
 import NavStackItem from '~/components/ui/NavStackItem.vue'
@@ -92,5 +92,5 @@ const { formatMessage } = useVIntl()
 
 const route = useRoute()
 const auth = await useAuth()
-const isStaging = useRuntimeConfig().public.siteUrl !== 'https://modrinth.com'
+const isStaging = useRuntimeConfig().public.siteUrl !== 'https://bedrinth.com'
 </script>

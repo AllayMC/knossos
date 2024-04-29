@@ -7,13 +7,13 @@
           <div>
             <p>
               Modding should be safe for everyone, so we take abuse and malicious intent seriously
-              at Modrinth. If you encounter content that violates our
+              at Bedrinth. If you encounter content that violates our
               <nuxt-link class="text-link" to="/legal/terms">Terms of Service</nuxt-link> or our
               <nuxt-link class="text-link" to="/legal/rules">Rules</nuxt-link>, please report it to
               us here.
             </p>
             <p>
-              This form is intended exclusively for reporting abuse or harmful content to Modrinth
+              This form is intended exclusively for reporting abuse or harmful content to Bedrinth
               staff. For bugs related to specific projects, please use the project's designated
               Issues link or Discord channel.
             </p>
@@ -92,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Button, MarkdownEditor, DropdownSelect, SaveIcon } from 'omorphia'
+import { Button, Card, DropdownSelect, MarkdownEditor, SaveIcon } from 'omorphia'
 import { useImageUpload } from '~/composables/image-upload.ts'
 
 const tags = useTags()

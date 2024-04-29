@@ -7,9 +7,9 @@
       These terms of use are entered into by and between You and Rinth, Inc.
       (<strong>"Company"</strong>, <strong>"we"</strong> or <strong>"us"</strong>). The following
       terms and conditions, together with any documents they expressly incorporate by reference
-      (collectively, these "Terms of Use"), govern your access to and use of www.modrinth.com,
-      api.modrinth.com, or the Modrinth App, including any content, functionality and services
-      offered on or through www.modrinth.com, api.modrinth.com, or the Modrinth App (the "Service"),
+      (collectively, these "Terms of Use"), govern your access to and use of www.bedrinth.com,
+      api.bedrinth.com, or the Bedrinth App, including any content, functionality and services
+      offered on or through www.bedrinth.com, api.bedrinth.com, or the Bedrinth App (the "Service"),
       whether as a guest or a registered user.
     </p>
     <p>
@@ -105,45 +105,30 @@
     <h2>API Usage</h2>
     <p>
       As part of our Services, we provide a tool known as Application Programming Interfaces
-      (Modrinth API). The Modrinth API enables users to perform actions on the Service via their own
+      (Bedrinth API). The Bedrinth API enables users to perform actions on the Service via their own
       services, such as their websites and/or applications.
     </p>
     <p>
-      We grant the User of the Modrinth API a limited, non-exclusive, non-sublicensable and
+      We grant the User of the Bedrinth API a limited, non-exclusive, non-sublicensable and
       revocable license to download, display, query, create, edit, and delete the User Generated
       Content on the Service via their own services, such as their websites and/or applications (the
       API License), provided the User complies with the following conditions:
     </p>
     <ul>
       <li>
-        The User uses the Modrinth API in accordance with these Terms, the Community Standards and
+        The User uses the Bedrinth API in accordance with these Terms, the Community Standards and
         all applicable laws and regulations that apply to such use.
       </li>
       <li>the User does not infringe any rights of third parties.</li>
       <li>
-        the User provides Modrinth all assistance requested in complying with, and concluding all
+        the User provides Bedrinth all assistance requested in complying with, and concluding all
         agreements required by the applicable laws and regulations.
       </li>
     </ul>
     <p>
-      Each User using the Modrinth API shall indemnify Modrinth and keep Modrinth indemnified for
+      Each User using the Bedrinth API shall indemnify Bedrinth and keep Bedrinth indemnified for
       all claims, proceedings or actions brought by another User or any other third party, including
       governmental authorities.
-    </p>
-    <h2>Our Rewards Program</h2>
-    <p>
-      Our rewards program (<strong>"Rewards Program"</strong>) provides developers and content
-      creators with an opportunity to monetize the projects that they upload to the Service.
-    </p>
-    <p>
-      The Company pays to you a percentage of net revenue collected by us and attributable to ad
-      impressions displayed solely on your project pages. The funds are directly deposited into your
-      account, which you can monitor and access via your creator dashboard. Simply enroll in the
-      Rewards Program on your dashboard in order to be able to take advantage of this program.
-      Please review the <nuxt-link to="/legal/cmp">Rewards Program Terms</nuxt-link>, as it contains
-      very important language regarding, among other things, your status as an independent
-      contractor, your responsibility to pay taxes, our disclaimers and limitations of liability (in
-      addition to our disclaimers and limitations of liability in these Terms of Use).
     </p>
     <h2>Intellectual Property Rights</h2>
     <p>
@@ -165,7 +150,7 @@
     </p>
     <h2>Trademarks</h2>
     <p>
-      The Company name, the terms Modrinth, the Company logo and all related names, logos, product
+      The Company name, the terms Bedrinth, the Company logo and all related names, logos, product
       and service names, designs and slogans are trademarks of the Company or its affiliates or
       licensors. You must not use such marks without the prior written permission of the Company.
       All other names, logos, product and service names, designs and slogans contained in the
@@ -527,31 +512,18 @@
       oral, with respect to the Service.
     </p>
     <h2>Your Comments and Concerns</h2>
-    <p>This website is operated by:</p>
     <p>
-      Rinth, Inc.<br />
-      410 North Scottsdale Road<br />
-      Suite 1000<br />
-      Tempe, AZ 85281
-    </p>
-    <p>
-      All notices of copyright infringement claims should be sent to the copyright agent designated
-      in our Copyright Policy in the manner and by the means set forth therein.
-    </p>
-    <p>
-      All other feedback, comments, requests for technical support and other communications relating
-      to the Service should be directed to:
-      <a href="mailto:support@modrinth.com">support@modrinth.com</a>.
+      <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>.
     </p>
   </div>
 </template>
 
 <script setup>
 const description =
-  'The Terms of Use of Modrinth, an open source modding platform focused on Minecraft.'
+  'The Terms of Use of Bedrinth, an open source modding platform focused on Minecraft.'
 
 useSeoMeta({
-  title: 'Terms of Use - Modrinth',
+  title: 'Terms of Use - Bedrinth',
   description,
   ogTitle: 'Terms of Use',
   ogDescription: description,

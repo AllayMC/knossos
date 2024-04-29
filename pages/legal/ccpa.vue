@@ -339,7 +339,7 @@
     <p>
       To exercise the access, data portability, and deletion rights described above, please submit a
       verifiable consumer request to us by emailing us at
-      <a href="mailto:support@modrinth.com">support@modrinth.com</a>.
+      <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>.
     </p>
     <p>
       Only you, or a person registered with the California Secretary of State that you authorize to
@@ -446,17 +446,17 @@
       your information described below and in the
       <nuxt-link to="/legal/privacy">Privacy Policy</nuxt-link>, your choices and rights regarding
       such use, or wish to exercise your rights under California law, please do not hesitate to
-      contact us at <a href="mailto:support@modrinth.com">support@modrinth.com</a>.
+      contact us at <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>.
     </p>
   </div>
 </template>
 
 <script setup>
 const description =
-  'The California Privacy Notice of Modrinth, an open source modding platform focused on Minecraft.'
+  'The California Privacy Notice of Bedrinth, an open source modding platform focused on Minecraft.'
 
 useSeoMeta({
-  title: 'California Privacy Notice - Modrinth',
+  title: 'California Privacy Notice - Bedrinth',
   description,
   ogTitle: 'California Privacy Notice',
   ogDescription: description,

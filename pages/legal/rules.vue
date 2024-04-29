@@ -11,7 +11,7 @@
     <p>
       If you find any violations of these Rules on our website, you should make us aware. You may
       use the Report button on any project, version, or user page, or you may email us at
-      <a href="mailto:support@modrinth.com">support@modrinth.com</a>.
+      <a href="mailto:wyd1542536763@gmail.com">support@bedrinth.com</a>.
     </p>
 
     <h2 id="prohibited-content">1. Prohibited Content</h2>
@@ -134,7 +134,7 @@
 
     <p>
       You must own or have the necessary licenses, rights, consents, and permissions to store,
-      share, and distribute the Content that is uploaded under your Modrinth account.
+      share, and distribute the Content that is uploaded under your Bedrinth account.
     </p>
 
     <p>
@@ -177,10 +177,10 @@
 
 <script setup>
 const description =
-  'The Content Rules of Modrinth, an open source modding platform focused on Minecraft.'
+  'The Content Rules of Bedrinth, an open source modding platform focused on Minecraft.'
 
 useSeoMeta({
-  title: 'Content Rules - Modrinth',
+  title: 'Content Rules - Bedrinth',
   description,
   ogTitle: 'Content Rules',
   ogDescription: description,

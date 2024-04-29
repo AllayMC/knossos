@@ -113,7 +113,7 @@ import Badge from '~/components/ui/Badge.vue'
 import { formatProjectType } from '~/plugins/shorthands.js'
 
 useHead({
-  title: 'Review projects - Modrinth',
+  title: 'Review projects - Bedrinth'
 })
 
 const app = useNuxtApp()

@@ -276,23 +276,23 @@
 
 <script setup>
 import {
-  PlusIcon,
   CalendarIcon,
+  ConfirmModal,
+  ContractIcon,
   EditIcon,
-  TrashIcon,
+  ExpandIcon,
+  ExternalIcon,
+  ImageIcon,
+  InfoIcon,
+  LeftArrowIcon,
+  PlusIcon,
+  RightArrowIcon,
   SaveIcon,
   StarIcon,
-  XIcon,
-  RightArrowIcon,
-  LeftArrowIcon,
-  ExternalIcon,
-  ExpandIcon,
-  ContractIcon,
-  UploadIcon,
-  InfoIcon,
-  ImageIcon,
   TransferIcon,
-  ConfirmModal,
+  TrashIcon,
+  UploadIcon,
+  XIcon
 } from 'omorphia'
 import FileInput from '~/components/ui/FileInput.vue'
 import DropArea from '~/components/ui/DropArea.vue'
@@ -321,7 +321,7 @@ const props = defineProps({
 })
 
 const title = `${props.project.title} - Gallery`
-const description = `View ${props.project.gallery.length} images of ${props.project.title} on Modrinth.`
+const description = `View ${props.project.gallery.length} images of ${props.project.title} on Bedrinth.`
 
 useSeoMeta({
   title,

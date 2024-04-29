@@ -396,7 +396,7 @@
             >our documentation</a
           >.
         </MessageBanner>
-        <Promotion v-if="tags.approvedStatuses.includes(project.status)" />
+        <LBPromotion v-if="tags.approvedStatuses.includes(project.status)" />
         <div class="navigation-card">
           <NavRow
             :links="[
@@ -697,33 +697,33 @@
           <div class="input-group">
             <a
               v-if="
-                config.public.apiBaseUrl.startsWith('https://api.modrinth.com') &&
-                config.public.siteUrl !== 'https://modrinth.com'
+                config.public.apiBaseUrl.startsWith('https://api.bedrinth.com') &&
+                config.public.siteUrl !== 'https://bedrinth.com'
               "
               class="iconified-button"
-              :href="`https://modrinth.com/${project.project_type}/${
+              :href="`https://bedrinth.com/${project.project_type}/${
                 project.slug ? project.slug : project.id
               }`"
               rel="noopener nofollow"
               target="_blank"
             >
               <ExternalIcon aria-hidden="true" />
-              View on modrinth.com
+              View on bedrinth.com
             </a>
             <a
               v-else-if="
-                config.public.apiBaseUrl.startsWith('https://staging-api.modrinth.com') &&
-                config.public.siteUrl !== 'https://staging.modrinth.com'
+                config.public.apiBaseUrl.startsWith('https://staging-api.bedrinth.com') &&
+                config.public.siteUrl !== 'https://staging.bedrinth.com'
               "
               class="iconified-button"
-              :href="`https://staging.modrinth.com/${project.project_type}/${
+              :href="`https://staging.bedrinth.com/${project.project_type}/${
                 project.slug ? project.slug : project.id
               }`"
               rel="noopener nofollow"
               target="_blank"
             >
               <ExternalIcon aria-hidden="true" />
-              View on staging.modrinth.com
+              View on staging.bedrinth.com
             </a>
           </div>
         </div>
@@ -739,20 +739,19 @@
 </template>
 <script setup>
 import {
-  Promotion,
-  OverflowMenu,
-  PopoutMenu,
   BookmarkIcon,
-  MoreHorizontalIcon,
-  ClipboardCopyIcon,
-  PlusIcon,
-  Checkbox,
   ChartIcon,
+  Checkbox,
+  ClipboardCopyIcon,
   EyeIcon,
-  renderString,
   isRejected,
-  isUnderReview,
   isStaff,
+  isUnderReview,
+  MoreHorizontalIcon,
+  OverflowMenu,
+  PlusIcon,
+  PopoutMenu,
+  renderString
 } from 'omorphia'
 import CrownIcon from '~/assets/images/utils/crown.svg'
 import CalendarIcon from '~/assets/images/utils/calendar.svg'
@@ -799,6 +798,7 @@ import { userCollectProject } from '~/composables/user.js'
 import CollectionCreateModal from '~/components/ui/CollectionCreateModal.vue'
 import OrganizationIcon from '~/assets/images/utils/organization.svg'
 import ModerationChecklist from '~/components/ui/ModerationChecklist.vue'
+import LBPromotion from '~/components/ui/LBPromotion.vue'
 
 const data = useNuxtApp()
 const route = useRoute()
@@ -1005,7 +1005,7 @@ const description = computed(
   () =>
     `${project.value.description} - Download the Minecraft ${projectTypeDisplay.value} ${
       project.value.title
-    } by ${members.value.find((x) => x.is_owner)?.user?.username || 'a Creator'} on Modrinth`
+    } by ${members.value.find((x) => x.is_owner)?.user?.username || 'a Creator'} on Bedrinth`
 )
 
 if (!route.name.startsWith('type-id-settings')) {

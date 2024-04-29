@@ -6,7 +6,7 @@
         :link-stack="[{ href: '/dashboard/revenue', label: 'Revenue' }]"
       />
       <h2>Transfer history</h2>
-      <p>All of your withdrawals from your Modrinth balance will be listed here:</p>
+      <p>All of your withdrawals from your Bedrinth balance will be listed here:</p>
       <div class="input-group">
         <DropdownSelect
           v-model="selectedYear"
@@ -97,11 +97,11 @@
 import {
   Badge,
   Breadcrumbs,
-  XIcon,
+  capitalizeString,
+  DropdownSelect,
   PayPalIcon,
   UnknownIcon,
-  DropdownSelect,
-  capitalizeString,
+  XIcon
 } from 'omorphia'
 import dayjs from 'dayjs'
 import TremendousIcon from '~/assets/images/external/tremendous.svg'
@@ -111,7 +111,7 @@ const vintl = useVIntl()
 const { formatMessage } = vintl
 
 useHead({
-  title: 'Transfer history - Modrinth',
+  title: 'Transfer history - Bedrinth'
 })
 
 const data = await useNuxtApp()

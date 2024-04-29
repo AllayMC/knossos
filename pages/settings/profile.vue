@@ -87,19 +87,19 @@
 
 <script setup>
 import {
-  Button,
-  UserIcon,
-  SaveIcon,
   Avatar,
+  Button,
   FileInput,
-  UploadIcon,
+  SaveIcon,
   UndoIcon,
-  XIcon,
+  UploadIcon,
+  UserIcon,
+  XIcon
 } from 'omorphia'
 import { commonMessages } from '~/utils/common-messages.ts'
 
 useHead({
-  title: 'Profile settings - Modrinth',
+  title: 'Profile settings - Bedrinth'
 })
 
 definePageMeta({
@@ -116,7 +116,7 @@ const messages = defineMessages({
   description: {
     id: 'settings.profile.description',
     defaultMessage:
-      'Your profile information is publicly viewable on Modrinth and through the <docs-link>Modrinth API</docs-link>.',
+      'Your profile information is publicly viewable on Bedrinth and through the <docs-link>Bedrinth API</docs-link>.',
   },
   profilePicture: {
     id: 'settings.profile.profile-picture.title',

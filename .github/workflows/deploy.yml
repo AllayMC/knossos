@@ -4,7 +4,7 @@ on: push
 
 jobs:
   deploy:
-    if: github.repository_owner == 'modrinth'
+    if: github.repository_owner == 'bedrinth'
     runs-on: ubuntu-latest
     permissions:
       contents: read

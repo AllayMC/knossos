@@ -52,7 +52,7 @@
   </div>
 </template>
 <script setup>
-import { SettingsIcon, RightArrowIcon } from 'omorphia'
+import { RightArrowIcon, SettingsIcon } from 'omorphia'
 
 const { formatMessage } = useVIntl()
 
@@ -115,7 +115,7 @@ const failedVerificationMessages = defineMessages({
 })
 
 useHead({
-  title: () => `${formatMessage(messages.title)} - Modrinth`,
+  title: () => `${formatMessage(messages.title)} - Bedrinth`
 })
 
 const auth = await useAuth()

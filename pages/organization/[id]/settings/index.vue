@@ -1,5 +1,5 @@
 <script setup>
-import { Button, FileInput, TrashIcon, Avatar, UploadIcon, SaveIcon, ConfirmModal } from 'omorphia'
+import { Avatar, Button, ConfirmModal, FileInput, SaveIcon, TrashIcon, UploadIcon } from 'omorphia'
 
 const {
   organization,
@@ -163,7 +163,7 @@ const onDeleteOrganization = useClientTry(async () => {
         <span class="label__title">URL</span>
       </label>
       <div class="text-input-wrapper">
-        <div class="text-input-wrapper__before">https://modrinth.com/organization/</div>
+        <div class="text-input-wrapper__before">https://bedrinth.com/organization/</div>
         <input
           id="project-slug"
           v-model="slug"

@@ -12,7 +12,7 @@ definePageMeta({
 })
 
 useHead({
-  title: 'Analytics - Modrinth',
+  title: 'Analytics - Bedrinth'
 })
 
 const auth = await useAuth()

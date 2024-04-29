@@ -148,7 +148,7 @@
       </button>
     </div>
     <p>
-      Applications can be used to authenticate Modrinth's users with your products. For more
+      Applications can be used to authenticate Bedrinth's users with your products. For more
       information, see
       <a class="text-link" href="https://docs.modrinth.com">Modrinth's API documentation</a>.
     </p>
@@ -216,27 +216,27 @@
 </template>
 <script setup>
 import {
-  FileInput,
-  UploadIcon,
-  PlusIcon,
   Avatar,
-  XIcon,
   Button,
   Checkbox,
-  TrashIcon,
-  EditIcon,
-  SaveIcon,
-  CopyCode,
   ConfirmModal,
+  CopyCode,
+  EditIcon,
+  FileInput,
+  PlusIcon,
+  SaveIcon,
+  TrashIcon,
+  UploadIcon,
+  XIcon
 } from 'omorphia'
 import Modal from '~/components/ui/Modal.vue'
 
 import {
-  scopeList,
-  hasScope,
-  toggleScope,
-  useScopes,
   getScopeValue,
+  hasScope,
+  scopeList,
+  toggleScope,
+  useScopes
 } from '~/composables/auth/scopes.ts'
 import { commonSettingsMessages } from '~/utils/common-messages.ts'
 
@@ -247,7 +247,7 @@ definePageMeta({
 })
 
 useHead({
-  title: 'Applications - Modrinth',
+  title: 'Applications - Bedrinth'
 })
 
 const data = useNuxtApp()

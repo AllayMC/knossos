@@ -21,7 +21,7 @@
     </div>
     <div
       v-if="
-        config.public.apiBaseUrl.startsWith('https://staging-api.modrinth.com') &&
+        config.public.apiBaseUrl.startsWith('https://staging-api.bedrinth.com') &&
         !cosmetics.hideStagingBanner
       "
       class="site-banner site-banner--warning"
@@ -42,7 +42,7 @@
     <header class="site-header" role="presentation">
       <section class="navbar columns" role="navigation">
         <section class="logo column" role="presentation">
-          <NuxtLink class="button-base" to="/" aria-label="Modrinth home page">
+          <NuxtLink class="button-base" to="/" aria-label="Bedrinth home page">
             <BrandTextLogo aria-hidden="true" class="text-logo" />
           </NuxtLink>
         </section>
@@ -413,7 +413,7 @@ const link = config.public.siteUrl + route.path.replace(/\/+$/, '')
 const verifyEmailBannerMessages = defineMessages({
   title: {
     id: 'layout.banner.verify-email.title',
-    defaultMessage: 'For security purposes, please verify your email address on Modrinth.',
+    defaultMessage: 'For security purposes, please verify your email address on Bedrinth.'
   },
   action: {
     id: 'layout.banner.verify-email.action',
@@ -424,7 +424,7 @@ const verifyEmailBannerMessages = defineMessages({
 const addEmailBannerMessages = defineMessages({
   title: {
     id: 'layout.banner.add-email.title',
-    defaultMessage: 'For security purposes, please enter your email on Modrinth.',
+    defaultMessage: 'For security purposes, please enter your email on Bedrinth.'
   },
   action: {
     id: 'layout.banner.add-email.button',
@@ -435,12 +435,12 @@ const addEmailBannerMessages = defineMessages({
 const stagingBannerMessages = defineMessages({
   title: {
     id: 'layout.banner.staging.title',
-    defaultMessage: 'You’re viewing Modrinth’s staging environment.',
+    defaultMessage: 'You’re viewing Bedrinth’s staging environment.'
   },
   description: {
     id: 'layout.banner.staging.description',
     defaultMessage:
-      'The staging environment is running on a copy of the production Modrinth database. This is used for testing and debugging purposes, and may be running in-development versions of the Modrinth backend or frontend newer than the production instance.',
+      'The staging environment is running on a copy of the production Bedrinth database. This is used for testing and debugging purposes, and may be running in-development versions of the Bedrinth backend or frontend newer than the production instance.',
   },
 })
 
@@ -465,8 +465,8 @@ const messages = defineMessages({
     defaultMessage: 'Your avatar',
   },
   getModrinthApp: {
-    id: 'layout.action.get-modrinth-app',
-    defaultMessage: 'Get Modrinth App',
+    id: 'layout.action.get-bedrinth-app',
+    defaultMessage: 'Get Bedrinth App'
   },
   changeTheme: {
     id: 'layout.action.change-theme',
@@ -539,33 +539,33 @@ useHead({
   ],
 })
 useSeoMeta({
-  title: 'Modrinth',
+  title: 'Bedrinth',
   description: () =>
     formatMessage({
       id: 'layout.meta.description',
       defaultMessage:
-        'Download Minecraft mods, plugins, datapacks, shaders, resourcepacks, and modpacks on Modrinth. ' +
-        'Discover and publish projects on Modrinth with a modern, easy to use interface and API.',
+        'Download Minecraft mods, plugins, datapacks, shaders, resourcepacks, and modpacks on Bedrinth. ' +
+        'Discover and publish projects on Bedrinth with a modern, easy to use interface and API.',
     }),
-  publisher: 'Modrinth',
+  publisher: 'Bedrinth',
   themeColor: '#1bd96a',
   colorScheme: 'dark light',
 
   // OpenGraph
-  ogTitle: 'Modrinth',
-  ogSiteName: 'Modrinth',
+  ogTitle: 'Bedrinth',
+  ogSiteName: 'Bedrinth',
   ogDescription: () =>
     formatMessage({
       id: 'layout.meta.og-description',
       defaultMessage: 'Discover and publish Minecraft content!',
     }),
   ogType: 'website',
-  ogImage: 'https://cdn.modrinth.com/modrinth-new.png',
+  ogImage: 'https://cdn.bedrinth.com/bedrinth-new.png',
   ogUrl: link,
 
   // Twitter
   twitterCard: 'summary',
-  twitterSite: '@modrinth',
+  twitterSite: '@bedrinth'
 })
 
 const developerModeCounter = ref(0)

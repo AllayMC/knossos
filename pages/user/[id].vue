@@ -121,7 +121,7 @@
         </div>
       </div>
       <div class="normal-page__content">
-        <Promotion />
+        <LBPromotion />
         <nav class="navigation-card">
           <NavRow
             :links="[
@@ -280,7 +280,7 @@
   </div>
 </template>
 <script setup>
-import { Promotion, LibraryIcon, BoxIcon, LinkIcon, LockIcon, XIcon } from 'omorphia'
+import { BoxIcon, LibraryIcon, LinkIcon, LockIcon, XIcon } from 'omorphia'
 import ProjectCard from '~/components/ui/ProjectCard.vue'
 import Badge from '~/components/ui/Badge.vue'
 import { reportUser } from '~/utils/report-helpers.ts'
@@ -345,11 +345,11 @@ const messages = defineMessages({
   },
   profileMetaDescription: {
     id: 'profile.meta.description',
-    defaultMessage: "Download {username}'s projects on Modrinth",
+    defaultMessage: 'Download {username}\'s projects on Bedrinth'
   },
   profileMetaDescriptionWithBio: {
     id: 'profile.meta.description-with-bio',
-    defaultMessage: "{bio} - Download {username}'s projects on Modrinth",
+    defaultMessage: '{bio} - Download {username}\'s projects on Bedrinth'
   },
   profileReportButton: {
     id: 'profile.button.report',
@@ -431,7 +431,7 @@ if (user.value.username !== route.params.id) {
   await navigateTo(`/user/${user.value.username}`, { redirectCode: 301 })
 }
 
-const title = computed(() => `${user.value.username} - Modrinth`)
+const title = computed(() => `${user.value.username} - Bedrinth`)
 const description = computed(() =>
   user.value.bio
     ? formatMessage(messages.profileMetaDescriptionWithBio, {
