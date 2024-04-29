@@ -3,7 +3,7 @@
     <a
       :href="`https://discord.gg/lifeblock`"
       rel="noopener nofollow sponsored"
-      :target="target"
+      target="_blank"
     ></a>
     <div class="GBBNWLJVGRHFLYVGSZKSSKNTHFYXHMBD-0">
       <div class="GBBNWLJVGRHFLYVGSZKSSKNTHFYXHMBD-1">
@@ -17,26 +17,11 @@
         </div>
       </div>
       <div class="GBBNWLJVGRHFLYVGSZKSSKNTHFYXHMBD-4">
-        <a rel="noopener sponsored" :target="target" href="https://adrinth.com"> Ad via Adrinth </a>
+        <a rel="noopener sponsored" target="_blank" href="https://adrinth.com"> Ad via Adrinth </a>
       </div>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const props = withDefaults(
-  defineProps<{
-    external: boolean
-    queryParam: string
-  }>(),
-  {
-    external: true,
-    queryParam: ''
-  }
-)
-
-const target = computed(() => (props.external ? '_blank' : '_self'))
-</script>
 
 <style lang="scss" scoped>
 .GBBNWLJVGRHFLYVGSZKSSKNTHFYXHMBD {
