@@ -44,13 +44,13 @@ export default defineNuxtPlugin((nuxtApp) => {
         version.primaryFile = {
           hashes: {
             sha1: '',
-            sha512: '',
+            sha512: ''
           },
           url: '#',
           filename: 'unknown',
           primary: false,
           size: 0,
-          file_type: null,
+          file_type: null
         }
       }
 
@@ -196,7 +196,7 @@ export const formatProjectType = (name) => {
 
 export const formatCategory = (name) => {
   if (name === 'modloader') {
-    return "Risugami's ModLoader"
+    return 'Risugami\'s ModLoader'
   } else if (name === 'bungeecord') {
     return 'BungeeCord'
   } else if (name === 'liteloader') {
@@ -233,6 +233,8 @@ export const formatCategory = (name) => {
     return 'Resource Pack'
   } else if (name === 'vanilla') {
     return 'Vanilla Shader'
+  } else if (name === 'powernukkitx') {
+    return 'PowerNukkitX'
   }
 
   return capitalizeString(name)
@@ -296,8 +298,8 @@ export const formatVersions = (versionArray) => {
             [
               allVersions[j].version,
               j,
-              allReleases.findIndex((x) => x.version === allVersions[j].version),
-            ],
+              allReleases.findIndex((x) => x.version === allVersions[j].version)
+            ]
           ])
 
           if (lastSnapshot !== null && lastSnapshot !== j + 1) {

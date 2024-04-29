@@ -1,5 +1,11 @@
 <template>
   <div>
+    <Card style="width: 100%; margin-left: auto; margin-right: auto">
+      <h2>Notice</h2>
+      <div style="color: #d52c2c; margin-bottom: 10px; font-weight: bold;">Bedrinth has no rewards
+        program open now!
+      </div>
+    </Card>
     <section class="universal-card">
       <h2>Revenue</h2>
       <div v-if="auth.user.payout_data.balance >= minWithdraw">
@@ -75,7 +81,7 @@
   </div>
 </template>
 <script setup>
-import { TransferIcon, HistoryIcon, PayPalIcon, SaveIcon, XIcon } from 'omorphia'
+import { Card, HistoryIcon, PayPalIcon, SaveIcon, TransferIcon, XIcon } from 'omorphia'
 
 const auth = await useAuth()
 const minWithdraw = ref(0.01)

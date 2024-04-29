@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="
-      loaderFilters.length > 1 || gameVersionFilters.length > 1 || versionTypeFilters.length > 1
+      loaderFilters.length > 1 || loaderVersionsFilters.length > 1 || versionTypeFilters.length > 1
     "
     class="card search-controls"
   >
@@ -21,12 +21,12 @@
       @update:model-value="updateQuery"
     />
     <Multiselect
-      v-if="gameVersionFilters.length > 1"
+      v-if="loaderVersionsFilters.length > 1"
       v-model="selectedGameVersions"
       :options="
         includeSnapshots
-          ? gameVersionFilters.map((x) => x.version)
-          : gameVersionFilters.filter((it) => it.version_type === 'release').map((x) => x.version)
+          ? loaderVersionsFilters.map((x) => x.version)
+          : loaderVersionsFilters.filter((it) => it.version_type === 'release').map((x) => x.version)
       "
       :multiple="true"
       :searchable="true"
@@ -55,8 +55,8 @@
     />
     <Checkbox
       v-if="
-        gameVersionFilters.length > 1 &&
-        gameVersionFilters.some((v) => v.version_type !== 'release')
+        loaderVersionsFilters.length > 1 &&
+        loaderVersionsFilters.some((v) => v.version_type !== 'release')
       "
       v-model="includeSnapshots"
       label="Show all versions"
@@ -93,8 +93,8 @@ const props = defineProps({
     type: Array,
     default() {
       return []
-    },
-  },
+    }
+  }
 })
 const emit = defineEmits(['switch-page'])
 
@@ -119,8 +119,14 @@ for (const version of props.versions) {
 tempVersions = Array.from(tempVersions)
 
 const loaderFilters = shallowRef(Array.from(tempLoaders))
-const gameVersionFilters = shallowRef(
-  tags.value.gameVersions.filter((gameVer) => tempVersions.includes(gameVer.version))
+const loaderVersionsFilters = computed(
+  () => {
+    if (loaderFilters.value[0]) {
+      let loaderVersion = tags.value.loaderVersions[loaderFilters.value[0]]
+      if (loaderVersion) return loaderVersion.filter((gameVer) => tempVersions.includes(gameVer.version))
+    }
+    return []
+  }
 )
 const versionTypeFilters = shallowRef(Array.from(tempReleaseChannels))
 const includeSnapshots = ref(route.query.s === 'true')
@@ -139,8 +145,8 @@ async function updateQuery() {
       l: selectedLoaders.value.length === 0 ? undefined : selectedLoaders.value,
       g: selectedGameVersions.value.length === 0 ? undefined : selectedGameVersions.value,
       c: selectedVersionTypes.value.length === 0 ? undefined : selectedVersionTypes.value,
-      s: includeSnapshots.value ? true : undefined,
-    },
+      s: includeSnapshots.value ? true : undefined
+    }
   })
   emit('switch-page', 1)
 }
@@ -153,9 +159,11 @@ async function updateQuery() {
   gap: var(--spacing-card-md);
   align-items: center;
   flex-wrap: wrap;
+
   .multiselect {
     flex: 1;
   }
+
   .checkbox-outer {
     min-width: fit-content;
   }

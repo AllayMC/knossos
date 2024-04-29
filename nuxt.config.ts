@@ -1,26 +1,26 @@
 import { promises as fs } from 'fs'
 import { pathToFileURL } from 'node:url'
 import svgLoader from 'vite-svg-loader'
-import { resolve, basename, relative } from 'pathe'
+import { basename, relative, resolve } from 'pathe'
 import { defineNuxtConfig } from 'nuxt/config'
 import { $fetch } from 'ofetch'
 import { globIterate } from 'glob'
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 import { consola } from 'consola'
 
-const STAGING_API_URL = 'https://staging-api.modrinth.com/v2/'
+const STAGING_API_URL = 'https://staging-api.bedrinth.com/v2/'
 
 const preloadedFonts = [
   'inter/Inter-Regular.woff2',
   'inter/Inter-Medium.woff2',
   'inter/Inter-SemiBold.woff2',
-  'inter/Inter-Bold.woff2',
+  'inter/Inter-Bold.woff2'
 ]
 
 const favicons = {
   '(prefers-color-scheme:no-preference)': '/favicon-light.ico',
   '(prefers-color-scheme:light)': '/favicon-light.ico',
-  '(prefers-color-scheme:dark)': '/favicon.ico',
+  '(prefers-color-scheme:dark)': '/favicon.ico'
 }
 
 /**
@@ -42,16 +42,16 @@ const localesCategoriesOverrides: Partial<Record<string, 'fun' | 'experimental'>
   'ru-x-bandit': 'fun',
   ar: 'experimental',
   he: 'experimental',
-  pes: 'experimental',
+  pes: 'experimental'
 }
 
 export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: 'en',
+        lang: 'en'
       },
-      title: 'Modrinth',
+      title: 'Bedrinth',
       link: [
         // The type is necessary because the linter can't always compare this very nested/complex type on itself
         ...preloadedFonts.map((font): object => {
@@ -60,7 +60,7 @@ export default defineNuxtConfig({
             href: `https://cdn-raw.modrinth.com/fonts/${font}?v=3.19`,
             as: 'font',
             type: 'font/woff2',
-            crossorigin: 'anonymous',
+            crossorigin: 'anonymous'
           }
         }),
         ...Object.entries(favicons).map(([media, href]): object => {
@@ -73,10 +73,10 @@ export default defineNuxtConfig({
           rel: 'search',
           type: 'application/opensearchdescription+xml',
           href: '/opensearch.xml',
-          title: 'Modrinth mods',
-        },
-      ],
-    },
+          title: 'Modrinth mods'
+        }
+      ]
+    }
   },
   vite: {
     plugins: [
@@ -87,14 +87,14 @@ export default defineNuxtConfig({
               name: 'preset-default',
               params: {
                 overrides: {
-                  removeViewBox: false,
-                },
-              },
-            },
-          ],
-        },
-      }),
-    ],
+                  removeViewBox: false
+                }
+              }
+            }
+          ]
+        }
+      })
+    ]
   },
   hooks: {
     async 'build:before'() {
@@ -106,7 +106,8 @@ export default defineNuxtConfig({
         apiUrl?: string
         categories?: any[]
         loaders?: any[]
-        gameVersions?: any[]
+        loaderVersions?: any,
+        gameVersions?: [],
         donationPlatforms?: any[]
         reportTypes?: any[]
       } = {}
@@ -139,8 +140,8 @@ export default defineNuxtConfig({
 
       const headers = {
         headers: {
-          'user-agent': 'Knossos generator (support@modrinth.com)',
-        },
+          'user-agent': 'Knossos generator (support@bedrinth.com)'
+        }
       }
 
       const [categories, loaders, gameVersions, donationPlatforms, reportTypes, projects] =
@@ -150,9 +151,14 @@ export default defineNuxtConfig({
           $fetch(`${API_URL}tag/game_version`, headers),
           $fetch(`${API_URL}tag/donation_platform`, headers),
           $fetch(`${API_URL}tag/report_type`, headers),
-          $fetch(`${API_URL}projects_random?count=40`, headers),
+          $fetch(`${API_URL}projects_random?count=40`, headers)
         ])
 
+      let map = new Map()
+      for (let loader of loaders) {
+        map.set(loader.name, await $fetch(`${API_URL}tag/loader_field/${loader.name}_api_versions`, headers))
+      }
+      state.loaderVersions = Object.fromEntries(map)
       state.categories = categories
       state.loaders = loaders
       state.gameVersions = gameVersions
@@ -178,7 +184,7 @@ export default defineNuxtConfig({
           name: `search-${type}`,
           path: `/${type}`,
           file: resolve(__dirname, 'pages/search/[searchProjectType].vue'),
-          children: [],
+          children: []
         })
       )
     },
@@ -213,7 +219,7 @@ export default defineNuxtConfig({
         const omorphiaLocaleSets = new Map<string, { files: { from: string }[] }>()
 
         for await (const localeDir of globIterate('node_modules/omorphia/locales/*', {
-          posix: true,
+          posix: true
         })) {
           const tag = basename(localeDir)
           omorphiaLocales.push(tag)
@@ -225,7 +231,7 @@ export default defineNuxtConfig({
           for await (const localeFile of globIterate(`${localeDir}/*`, { posix: true })) {
             localeFiles.push({
               from: pathToFileURL(localeFile).toString(),
-              format: 'default',
+              format: 'default'
             })
           }
         }
@@ -250,7 +256,7 @@ export default defineNuxtConfig({
           if (fileName === 'index.json') {
             localeFiles.push({
               from: `./${localeFile}`,
-              format: 'crowdin',
+              format: 'crowdin'
             })
           } else if (fileName === 'meta.json') {
             const meta: Record<string, { message: string }> = await fs
@@ -279,11 +285,11 @@ export default defineNuxtConfig({
         if (cnDataImport != null) {
           ;(locale.additionalImports ??= []).push({
             from: cnDataImport,
-            resolve: false,
+            resolve: false
           })
         }
       }
-    },
+    }
   },
   runtimeConfig: {
     // @ts-ignore
@@ -294,7 +300,7 @@ export default defineNuxtConfig({
       apiBaseUrl: getApiUrl(),
       siteUrl: getDomain(),
 
-      owner: process.env.VERCEL_GIT_REPO_OWNER || 'modrinth',
+      owner: process.env.VERCEL_GIT_REPO_OWNER || 'bedrinth',
       slug: process.env.VERCEL_GIT_REPO_SLUG || 'knossos',
       branch:
         process.env.VERCEL_GIT_COMMIT_REF ||
@@ -307,8 +313,8 @@ export default defineNuxtConfig({
         process.env.CF_PAGES_COMMIT_SHA ||
         // @ts-ignore
         globalThis.CF_PAGES_COMMIT_SHA ||
-        'unknown',
-    },
+        'unknown'
+    }
   },
   typescript: {
     shim: false,
@@ -317,9 +323,9 @@ export default defineNuxtConfig({
     tsConfig: {
       compilerOptions: {
         moduleResolution: 'bundler',
-        allowImportingTsExtensions: true,
-      },
-    },
+        allowImportingTsExtensions: true
+      }
+    }
   },
   modules: ['@vintl/nuxt', '@nuxtjs/turnstile'],
   vintl: {
@@ -329,15 +335,15 @@ export default defineNuxtConfig({
         tag: 'en-US',
         meta: {
           static: {
-            iso: 'en',
-          },
-        },
-      },
+            iso: 'en'
+          }
+        }
+      }
     ],
     storage: 'cookie',
     parserless: 'only-prod',
     seo: {
-      defaultLocaleHasParameter: false,
+      defaultLocaleHasParameter: false
     },
     onParseError({ error, message, messageId, moduleId, parseMessage, parserOptions }) {
       const errorMessage = String(error)
@@ -363,17 +369,17 @@ export default defineNuxtConfig({
           `[i18n] ${messageId} in ${modulePath} cannot be parsed due to ${reason}. It will be skipped.`
         )
       }
-    },
+    }
   },
   turnstile: {
-    siteKey: '0x4AAAAAAAW3guHM6Eunbgwu',
+    siteKey: '0x4AAAAAAAYMkPmqrKz2RDSm'
   },
   nitro: {
-    moduleSideEffects: ['@vintl/compact-number/locale-data'],
+    moduleSideEffects: ['@vintl/compact-number/locale-data']
   },
   devtools: {
-    enabled: true,
-  },
+    enabled: true
+  }
 })
 
 function getApiUrl() {
@@ -395,9 +401,9 @@ function getDomain() {
     } else if (process.env.VERCEL_URL) {
       return `https://${process.env.VERCEL_URL}`
     } else if (getApiUrl() === STAGING_API_URL) {
-      return 'https://staging.modrinth.com'
+      return 'https://staging.bedrinth.com'
     } else {
-      return 'https://modrinth.com'
+      return 'https://bedrinth.com'
     }
   } else {
     return 'http://localhost:3000'

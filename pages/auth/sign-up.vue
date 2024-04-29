@@ -1,33 +1,33 @@
 <template>
   <div>
-    <h1>{{ formatMessage(messages.signUpWithTitle) }}</h1>
-
+    <!--    todo oauth-->
+    <!--  <h1>{{ formatMessage(messages.signUpWithTitle) }}</h1>
     <section class="third-party">
-      <a class="btn discord-btn" :href="getAuthUrl('discord', redirectTarget)">
-        <SSODiscordIcon />
-        <span>Discord</span>
-      </a>
-      <a class="btn" :href="getAuthUrl('github', redirectTarget)">
-        <SSOGitHubIcon />
-        <span>GitHub</span>
-      </a>
-      <a class="btn" :href="getAuthUrl('microsoft', redirectTarget)">
-        <SSOMicrosoftIcon />
-        <span>Microsoft</span>
-      </a>
-      <a class="btn" :href="getAuthUrl('google', redirectTarget)">
-        <SSOGoogleIcon />
-        <span>Google</span>
-      </a>
-      <a class="btn" :href="getAuthUrl('steam', redirectTarget)">
-        <SSOSteamIcon />
-        <span>Steam</span>
-      </a>
-      <a class="btn" :href="getAuthUrl('gitlab', redirectTarget)">
-        <SSOGitLabIcon />
-        <span>GitLab</span>
-      </a>
-    </section>
+       <a class="btn discord-btn" :href="getAuthUrl('discord', redirectTarget)">
+         <SSODiscordIcon />
+         <span>Discord</span>
+       </a>
+       <a class="btn" :href="getAuthUrl('github', redirectTarget)">
+         <SSOGitHubIcon />
+         <span>GitHub</span>
+       </a>
+       <a class="btn" :href="getAuthUrl('microsoft', redirectTarget)">
+         <SSOMicrosoftIcon />
+         <span>Microsoft</span>
+       </a>
+       <a class="btn" :href="getAuthUrl('google', redirectTarget)">
+         <SSOGoogleIcon />
+         <span>Google</span>
+       </a>
+       <a class="btn" :href="getAuthUrl('steam', redirectTarget)">
+         <SSOSteamIcon />
+         <span>Steam</span>
+       </a>
+       <a class="btn" :href="getAuthUrl('gitlab', redirectTarget)">
+         <SSOGitLabIcon />
+         <span>GitLab</span>
+       </a>
+     </section>-->
 
     <h1>{{ formatMessage(messages.createAccountTitle) }}</h1>
 
@@ -84,13 +84,6 @@
         />
       </div>
 
-      <Checkbox
-        v-model="subscribe"
-        class="subscribe-btn"
-        :label="formatMessage(messages.subscribeLabel)"
-        :description="formatMessage(messages.subscribeLabel)"
-      />
-
       <p>
         <IntlFormatted :message-id="messages.legalDisclaimer">
           <template #terms-link="{ children }">
@@ -132,19 +125,7 @@
 </template>
 
 <script setup>
-import {
-  RightArrowIcon,
-  UserIcon,
-  Checkbox,
-  SSOGitHubIcon,
-  SSOMicrosoftIcon,
-  SSOGoogleIcon,
-  SSOSteamIcon,
-  SSODiscordIcon,
-  KeyIcon,
-  MailIcon,
-  SSOGitLabIcon,
-} from 'omorphia'
+import { KeyIcon, MailIcon, RightArrowIcon, UserIcon } from 'omorphia'
 
 const { formatMessage } = useVIntl()
 
@@ -159,7 +140,7 @@ const messages = defineMessages({
   },
   createAccountTitle: {
     id: 'auth.sign-up.title.create-account',
-    defaultMessage: 'Or create an account yourself',
+    defaultMessage: 'Create an account yourself'
   },
   emailLabel: {
     id: 'auth.sign-up.email.label',
@@ -224,7 +205,7 @@ const username = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const token = ref('')
-const subscribe = ref(true)
+const subscribe = ref(false)
 
 const signInLink = computed(
   () => `/auth/sign-in${route.query.redirect ? `?redirect=${route.query.redirect}` : ''}`

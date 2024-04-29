@@ -30,9 +30,10 @@
           >
             <LibraryIcon />
           </NavStackItem>
-          <NavStackItem link="/dashboard/revenue" label="Revenue">
-            <CurrencyIcon />
-          </NavStackItem>
+          <!--          todo support revenue-->
+          <!--          <NavStackItem link="/dashboard/revenue" label="Revenue">-->
+          <!--            <CurrencyIcon />-->
+          <!--          </NavStackItem>-->
         </NavStack>
       </aside>
     </div>
@@ -42,12 +43,11 @@
   </div>
 </template>
 <script setup>
-import { LibraryIcon, ChartIcon } from 'omorphia'
+import { ChartIcon, LibraryIcon } from 'omorphia'
 import NavStack from '~/components/ui/NavStack.vue'
 import NavStackItem from '~/components/ui/NavStackItem.vue'
 
 import DashboardIcon from '~/assets/images/utils/dashboard.svg'
-import CurrencyIcon from '~/assets/images/utils/currency.svg'
 import ListIcon from '~/assets/images/utils/list.svg'
 import ReportIcon from '~/assets/images/utils/report.svg'
 import NotificationsIcon from '~/assets/images/utils/bell.svg'

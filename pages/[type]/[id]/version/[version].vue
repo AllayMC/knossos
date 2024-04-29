@@ -82,13 +82,13 @@
       <div v-if="fieldErrors && showKnownErrors" class="known-errors">
         <ul>
           <li v-if="version.version_number === ''">Your version must have a version number.</li>
-          <li v-if="version.game_versions.length === 0">
-            Your version must have the supported Minecraft versions selected.
+          <li v-if="this.getArrayGameVersion.length === 0">
+            Your version must have the Api versions selected.
           </li>
           <li v-if="newFiles.length === 0 && version.files.length === 0 && !replaceFile">
             Your version must have a file uploaded.
           </li>
-          <li v-if="version.loaders.length === 0 && project.project_type !== 'resourcepack'">
+          <li v-if="this.getArrayLoaders === 0 && project.project_type !== 'resourcepack'">
             Your version must have the supported mod loaders selected.
           </li>
         </ul>
@@ -432,7 +432,7 @@
         </div>
         <div class="additional-files">
           <h4>Upload additional files</h4>
-          <span v-if="version.loaders.some((x) => tags.loaderData.dataPackLoaders.includes(x))">
+          <span v-if="tags.loaderData.dataPackLoaders.includes(version.loaders)">
             Used for additional files such as required/optional resource packs
           </span>
           <span v-else>Used for files such as sources or Javadocs.</span>
@@ -522,10 +522,10 @@
             "
             :custom-label="(value) => $formatCategory(value)"
             :loading="tags.loaders.length === 0"
-            :multiple="true"
+            :multiple="false"
             :searchable="true"
             :show-no-results="false"
-            :close-on-select="false"
+            :close-on-select="true"
             :clear-on-select="false"
             :show-labels="false"
             :limit="6"
@@ -535,22 +535,16 @@
           <Categories v-else :categories="version.loaders" :type="project.actualProjectType" />
         </div>
         <div>
-          <h4>Game versions</h4>
+          <h4>Api versions</h4>
           <template v-if="isEditing">
             <multiselect
               v-model="version.game_versions"
-              :options="
-                showSnapshots
-                  ? tags.gameVersions.map((x) => x.version)
-                  : tags.gameVersions
-                      .filter((it) => it.version_type === 'release')
-                      .map((x) => x.version)
-              "
-              :loading="tags.gameVersions.length === 0"
-              :multiple="true"
+              :options="apiOptions"
+              :loading="apiOptions.length === 0"
+              :multiple="false"
               :searchable="true"
               :show-no-results="false"
-              :close-on-select="false"
+              :close-on-select="true"
               :clear-on-select="false"
               :show-labels="false"
               :limit="6"
@@ -565,7 +559,7 @@
               :border="false"
             />
           </template>
-          <span v-else>{{ $formatVersion(version.game_versions) }}</span>
+          <span v-else>{{ $formatVersion(getArrayGameVersion()) }}</span>
         </div>
         <div v-if="!isEditing">
           <h4>Downloads</h4>
@@ -678,53 +672,55 @@ export default defineNuxtComponent({
     ModalConfirm,
     Multiselect,
     BoxIcon,
-    RightArrowIcon,
+    RightArrowIcon
   },
   props: {
     project: {
       type: Object,
       default() {
         return {}
-      },
+      }
     },
     versions: {
       type: Array,
       default() {
         return []
-      },
+      }
     },
     featuredVersions: {
       type: Array,
       default() {
         return []
-      },
+      }
     },
     members: {
       type: Array,
       default() {
         return [{}]
-      },
+      }
     },
     currentMember: {
       type: Object,
       default() {
         return null
-      },
+      }
     },
     dependencies: {
       type: Object,
       default() {
         return {}
-      },
+      }
     },
     resetProject: {
       type: Function,
       required: true,
-      default: () => {},
-    },
+      default: () => {
+      }
+    }
   },
   async setup(props) {
     const data = useNuxtApp()
+
     const route = useRoute()
 
     const auth = await useAuth()
@@ -736,12 +732,12 @@ export default defineNuxtComponent({
     const fileTypes = [
       {
         display: 'Required resource pack',
-        value: 'required-resource-pack',
+        value: 'required-resource-pack'
       },
       {
         display: 'Optional resource pack',
-        value: 'optional-resource-pack',
-      },
+        value: 'optional-resource-pack'
+      }
     ]
     let oldFileTypes = []
 
@@ -756,6 +752,26 @@ export default defineNuxtComponent({
 
     if (mode === 'edit') {
       isEditing = true
+    }
+
+    function getArrayGameVersion() {
+      let result = []
+      if (typeof (version.game_versions) === 'string') {
+        result.push(version.game_versions)
+      } else if (version.game_versions) {
+        result = version.game_versions
+      }
+      return result
+    }
+
+    function getArrayLoaders() {
+      let result = []
+      if (typeof (version.loaders) === 'string') {
+        result.push(version.loaders)
+      } else if (version.loaders) {
+        result = version.loaders
+      }
+      return result
     }
 
     if (route.params.version === 'create') {
@@ -776,8 +792,9 @@ export default defineNuxtComponent({
         dependencies: [],
         game_versions: [],
         loaders: [],
-        featured: false,
+        featured: false
       }
+
       // For navigation from versions page / upload file prompt
       if (process.client && history.state && history.state.newPrimaryFile) {
         replaceFile = history.state.newPrimaryFile
@@ -791,7 +808,7 @@ export default defineNuxtComponent({
 
           version = {
             ...version,
-            ...inferredData,
+            ...inferredData
           }
         } catch (err) {
           console.error('Error parsing version file data', err)
@@ -818,7 +835,7 @@ export default defineNuxtComponent({
       throw createError({
         fatal: true,
         statusCode: 404,
-        message: 'Version not found',
+        message: 'Version not found'
       })
     }
 
@@ -843,8 +860,8 @@ export default defineNuxtComponent({
 
       dependency.link = dependency.project
         ? `/${dependency.project.project_type}/${dependency.project.slug ?? dependency.project.id}${
-            dependency.version ? `/version/${encodeURI(dependency.version.version_number)}` : ''
-          }`
+          dependency.version ? `/version/${encodeURI(dependency.version.version_number)}` : ''
+        }`
         : ''
     }
 
@@ -857,7 +874,7 @@ export default defineNuxtComponent({
       () =>
         `Download ${props.project.title} ${
           version.version_number
-        } on Modrinth. Supports ${data.$formatVersion(version.game_versions)} ${version.loaders
+        } on Modrinth. Supports ${data.$formatVersion(getArrayGameVersion())} ${getArrayLoaders()
           .map((x) => x.charAt(0).toUpperCase() + x.slice(1))
           .join(' & ')}. Published on ${data
           .$dayjs(version.date_published)
@@ -868,7 +885,7 @@ export default defineNuxtComponent({
       title,
       description,
       ogTitle: title,
-      ogDescription: description,
+      ogDescription: description
     })
 
     return {
@@ -878,11 +895,13 @@ export default defineNuxtComponent({
       oldFileTypes: ref(oldFileTypes),
       isCreating: ref(isCreating),
       isEditing: ref(isEditing),
-      version: ref(version),
+      version: reactive(version),
       primaryFile: ref(primaryFile),
       alternateFile: ref(alternateFile),
       replaceFile: ref(replaceFile),
       uploadedImageIds: ref([]),
+      getArrayLoaders,
+      getArrayGameVersion
     }
   },
   data() {
@@ -902,15 +921,25 @@ export default defineNuxtComponent({
       packageLoaders: ['forge', 'fabric', 'quilt'],
 
       showKnownErrors: false,
-      shouldPreventActions: false,
+      shouldPreventActions: false
     }
   },
   computed: {
+    apiOptions() {
+      if (typeof (this.version.loaders) === 'string') {
+        return this.showSnapshots
+          ? this.tags.loaderVersions[this.version.loaders].map((x) => x.version)
+          : this.tags.loaderVersions[this.version.loaders]
+            .filter((it) => it.version_type === 'release')
+            .map((x) => x.version)
+      }
+      return []
+    },
     fieldErrors() {
       return (
         this.version.version_number === '' ||
-        this.version.game_versions.length === 0 ||
-        (this.version.loaders.length === 0 && this.project.project_type !== 'resourcepack') ||
+        this.getArrayGameVersion() === 0 ||
+        (this.getArrayLoaders().length === 0 && this.project.project_type !== 'resourcepack') ||
         (this.newFiles.length === 0 && this.version.files.length === 0 && !this.replaceFile)
       )
     },
@@ -919,7 +948,7 @@ export default defineNuxtComponent({
       return [...this.version.dependencies].sort(
         (a, b) => order.indexOf(a.dependency_type) - order.indexOf(b.dependency_type)
       )
-    },
+    }
   },
   watch: {
     '$route.path'() {
@@ -928,6 +957,9 @@ export default defineNuxtComponent({
 
       this.isEditing = mode === 'edit' || this.$route.params.version === 'create'
     },
+    'version.loaders'() {
+      this.version.game_versions = []
+    }
   },
   methods: {
     async onImageUpload(file) {
@@ -953,7 +985,7 @@ export default defineNuxtComponent({
     },
     getPreviousLabel() {
       return this.$router.options.history.state.back &&
-        this.$router.options.history.state.back.endsWith('/changelog')
+      this.$router.options.history.state.back.endsWith('/changelog')
         ? 'Changelog'
         : 'Versions'
     },
@@ -969,19 +1001,19 @@ export default defineNuxtComponent({
               group: 'main',
               title: 'Dependency already added',
               text: 'You cannot add the same dependency twice.',
-              type: 'error',
+              type: 'error'
             })
           } else {
             this.version.dependencies.push({
               project,
               project_id: project.id,
               dependency_type: newDependencyType,
-              link: `/${project.project_type}/${project.slug ?? project.id}`,
+              link: `/${project.project_type}/${project.slug ?? project.id}`
             })
 
             this.$emit('update:dependencies', {
               projects: this.dependencies.projects.concat([project]),
-              versions: this.dependencies.versions,
+              versions: this.dependencies.versions
             })
           }
         } else if (dependencyAddMode === 'version') {
@@ -994,7 +1026,7 @@ export default defineNuxtComponent({
               group: 'main',
               title: 'Dependency already added',
               text: 'You cannot add the same dependency twice.',
-              type: 'error',
+              type: 'error'
             })
           } else {
             this.version.dependencies.push({
@@ -1005,12 +1037,12 @@ export default defineNuxtComponent({
               dependency_type: this.newDependencyType,
               link: `/${project.project_type}/${project.slug ?? project.id}/version/${encodeURI(
                 version.version_number
-              )}`,
+              )}`
             })
 
             this.$emit('update:dependencies', {
               projects: this.dependencies.projects.concat([project]),
-              versions: this.dependencies.versions.concat([version]),
+              versions: this.dependencies.versions.concat([version])
             })
           }
         }
@@ -1022,7 +1054,7 @@ export default defineNuxtComponent({
             group: 'main',
             title: 'Invalid Dependency',
             text: 'The specified dependency could not be found',
-            type: 'error',
+            type: 'error'
           })
         }
       }
@@ -1048,10 +1080,10 @@ export default defineNuxtComponent({
               file_types: this.newFileTypes.reduce(
                 (acc, x, i) => ({
                   ...acc,
-                  [fileParts[i]]: x ? x.value : null,
+                  [fileParts[i]]: x ? x.value : null
                 }),
                 {}
-              ),
+              )
             })
           )
 
@@ -1063,8 +1095,8 @@ export default defineNuxtComponent({
             method: 'POST',
             body: formData,
             headers: {
-              'Content-Disposition': formData,
-            },
+              'Content-Disposition': formData
+            }
           })
         }
 
@@ -1074,17 +1106,17 @@ export default defineNuxtComponent({
           changelog: this.version.changelog,
           version_type: this.version.version_type,
           dependencies: this.version.dependencies,
-          game_versions: this.version.game_versions,
-          loaders: this.version.loaders,
+          game_versions: this.getArrayGameVersion(),
+          loaders: this.getArrayLoaders(),
           primary_file: ['sha1', this.primaryFile.hashes.sha1],
           featured: this.version.featured,
           file_types: this.oldFileTypes.map((x, i) => {
             return {
               algorithm: 'sha1',
               hash: this.version.files[i].hashes.sha1,
-              file_type: x ? x.value : null,
+              file_type: x ? x.value : null
             }
-          }),
+          })
         }
 
         if (this.project.project_type === 'modpack') {
@@ -1093,12 +1125,12 @@ export default defineNuxtComponent({
 
         await useBaseFetch(`version/${this.version.id}`, {
           method: 'PATCH',
-          body,
+          body
         })
 
         for (const hash of this.deleteFiles) {
           await useBaseFetch(`version_file/${hash}?version_id=${this.version.id}`, {
-            method: 'DELETE',
+            method: 'DELETE'
           })
         }
 
@@ -1116,7 +1148,7 @@ export default defineNuxtComponent({
           group: 'main',
           title: 'An error occurred',
           text: err.data.description,
-          type: 'error',
+          type: 'error'
         })
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
@@ -1141,7 +1173,7 @@ export default defineNuxtComponent({
           group: 'main',
           title: 'An error occurred',
           text: err.data ? err.data.description : err,
-          type: 'error',
+          type: 'error'
         })
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
@@ -1168,17 +1200,17 @@ export default defineNuxtComponent({
         version_title: version.name || version.version_number,
         version_body: version.changelog,
         dependencies: version.dependencies,
-        game_versions: version.game_versions,
-        loaders: version.loaders,
+        game_versions: this.getArrayGameVersion(),
+        loaders: this.getArrayLoaders(),
         release_channel: version.version_type,
         featured: version.featured,
         file_types: this.newFileTypes.reduce(
           (acc, x, i) => ({
             ...acc,
-            [fileParts[this.replaceFile ? i + 1 : i]]: x ? x.value : null,
+            [fileParts[this.replaceFile ? i + 1 : i]]: x ? x.value : null
           }),
           {}
-        ),
+        )
       }
 
       formData.append('data', JSON.stringify(newVersion))
@@ -1198,15 +1230,13 @@ export default defineNuxtComponent({
           this.newFiles[i].name
         )
       }
-
       const data = await useBaseFetch('version', {
         method: 'POST',
         body: formData,
         headers: {
-          'Content-Disposition': formData,
-        },
+          'Content-Disposition': formData
+        }
       })
-
       await this.resetProjectVersions()
 
       await this.$router.push(
@@ -1219,7 +1249,7 @@ export default defineNuxtComponent({
       startLoading()
 
       await useBaseFetch(`version/${this.version.id}`, {
-        method: 'DELETE',
+        method: 'DELETE'
       })
 
       await this.resetProjectVersions()
@@ -1235,7 +1265,7 @@ export default defineNuxtComponent({
           this.version,
           this.primaryFile,
           this.members,
-          this.tags.gameVersions,
+          [],
           this.packageLoaders
         )
 
@@ -1254,9 +1284,9 @@ export default defineNuxtComponent({
           changelog: this.version.changelog,
           version_type: this.version.version_type,
           dependencies: this.version.dependencies,
-          game_versions: this.version.game_versions,
+          game_versions: this.getArrayGameVersion(),
           loaders: this.packageLoaders,
-          featured: this.version.featured,
+          featured: this.version.featured
         })
 
         this.$refs.modal_package_mod.hide()
@@ -1265,14 +1295,14 @@ export default defineNuxtComponent({
           group: 'main',
           title: 'Packaging Success',
           text: 'Your data pack was successfully packaged as a mod! Make sure to playtest to check for errors.',
-          type: 'success',
+          type: 'success'
         })
       } catch (err) {
         this.$notify({
           group: 'main',
           title: 'An error occurred',
           text: err.data ? err.data.description : err,
-          type: 'error',
+          type: 'error'
         })
       }
       stopLoading()
@@ -1283,7 +1313,7 @@ export default defineNuxtComponent({
         useBaseFetch(`project/${this.version.project_id}/version`),
         useBaseFetch(`project/${this.version.project_id}/version?featured=true`),
         useBaseFetch(`project/${this.version.project_id}/dependencies`),
-        this.resetProject(),
+        this.resetProject()
       ])
 
       const newCreatedVersions = this.$computeVersions(versions, this.members)
@@ -1296,8 +1326,8 @@ export default defineNuxtComponent({
       this.$emit('update:dependencies', dependencies)
 
       return newCreatedVersions
-    },
-  },
+    }
+  }
 })
 </script>
 

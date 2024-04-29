@@ -4,6 +4,17 @@ export default defineNuxtRouteMiddleware(async (_to, from) => {
   const config = useRuntimeConfig()
   const auth = await useAuth()
 
+  if (_to.path === '/projects') {
+    return await navigateTo(
+      {
+        path: '/dashboard/projects'
+      },
+      {
+        replace: true
+      }
+    )
+  }
+
   if (!auth.value.user) {
     const fullPath = from.fullPath
 

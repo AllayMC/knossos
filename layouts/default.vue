@@ -133,10 +133,6 @@
                     class="item button-transparent primary-color"
                     to="/app"
                   >
-                    <DownloadIcon class="icon" />
-                    <span class="title">
-                      {{ formatMessage(messages.getModrinthApp) }}
-                    </span>
                   </NuxtLink>
                   <hr class="divider" />
                   <button class="item button-transparent" @click="logoutUser()">
@@ -150,13 +146,6 @@
               <section v-else class="auth-prompt">
                 <nuxt-link class="iconified-button raised-button" to="/auth/sign-in">
                   <LogInIcon /> {{ formatMessage(commonMessages.signInButton) }}
-                </nuxt-link>
-                <nuxt-link
-                  v-if="$route.path !== '/app' && !cosmetics.hideModrinthAppPromos"
-                  class="btn btn-outline btn-primary app-btn"
-                  to="/app"
-                >
-                  <DownloadIcon /> {{ formatMessage(messages.getModrinthApp) }}
                 </nuxt-link>
               </section>
             </section>
@@ -323,7 +312,7 @@
       <slot id="main" />
     </main>
     <footer>
-      <div class="logo-info" role="region" aria-label="Modrinth information">
+      <div class="logo-info" role="region" aria-label="Bedrinth information">
         <BrandTextLogo
           aria-hidden="true"
           class="text-logo button-base"
@@ -334,7 +323,7 @@
             <template #github-link="{ children }">
               <a
                 :target="$external()"
-                href="https://github.com/modrinth"
+                href="https://github.com/bedrinth"
                 class="text-link"
                 rel="noopener"
               >
@@ -361,44 +350,11 @@
         </p>
         <p>© Rinth, Inc.</p>
       </div>
-      <div class="links links-1" role="region" aria-label="Legal">
-        <h4 aria-hidden="true">{{ formatMessage(footerMessages.companyTitle) }}</h4>
-        <nuxt-link to="/legal/terms"> {{ formatMessage(footerMessages.terms) }}</nuxt-link>
-        <nuxt-link to="/legal/privacy"> {{ formatMessage(footerMessages.privacy) }}</nuxt-link>
-        <nuxt-link to="/legal/rules"> {{ formatMessage(footerMessages.rules) }}</nuxt-link>
-        <a :target="$external()" href="https://careers.modrinth.com">
-          {{ formatMessage(footerMessages.careers) }}
-          <span v-if="false" class="count-bubble">0</span>
-        </a>
-      </div>
-      <div class="links links-2" role="region" aria-label="Resources">
-        <h4 aria-hidden="true">{{ formatMessage(footerMessages.resourcesTitle) }}</h4>
-        <a :target="$external()" href="https://support.modrinth.com">
-          {{ formatMessage(footerMessages.support) }}
-        </a>
-        <a :target="$external()" href="https://blog.modrinth.com">
-          {{ formatMessage(footerMessages.blog) }}
-        </a>
-        <a :target="$external()" href="https://docs.modrinth.com">
-          {{ formatMessage(footerMessages.docs) }}
-        </a>
-        <a :target="$external()" href="https://status.modrinth.com">
-          {{ formatMessage(footerMessages.status) }}
-        </a>
-      </div>
-      <div class="links links-3" role="region" aria-label="Interact">
-        <h4 aria-hidden="true">{{ formatMessage(footerMessages.interactTitle) }}</h4>
-        <a rel="noopener" :target="$external()" href="https://discord.modrinth.com"> Discord </a>
-        <a rel="noopener" :target="$external()" href="https://x.com/modrinth"> X (Twitter) </a>
-        <a rel="noopener" :target="$external()" href="https://floss.social/@modrinth"> Mastodon </a>
-        <a rel="noopener" :target="$external()" href="https://crowdin.com/project/modrinth">
-          Crowdin
-        </a>
-      </div>
       <div class="buttons">
-        <nuxt-link class="btn btn-outline btn-primary" to="/app">
-          <DownloadIcon aria-hidden="true" />
-          {{ formatMessage(messages.getModrinthApp) }}
+        <nuxt-link class="iconified-button raised-button"
+                   to="https://discord.com/invite/XXus4FB6qf">
+          <DiscordIcon aria-hidden="true" />
+          {{ 'Join Discord' }}
         </nuxt-link>
         <button class="iconified-button raised-button" @click="changeTheme">
           <MoonIcon v-if="$colorMode.value === 'light'" aria-hidden="true" />
@@ -418,10 +374,11 @@
 </template>
 
 <script setup>
-import { LogInIcon, DownloadIcon, LibraryIcon, XIcon, IssuesIcon, Button } from 'omorphia'
+import { Button, IssuesIcon, LibraryIcon, LogInIcon, XIcon } from 'omorphia'
 import HamburgerIcon from '~/assets/images/utils/hamburger.svg'
 import CrossIcon from '~/assets/images/utils/x.svg'
 import SearchIcon from '~/assets/images/utils/search.svg'
+import DiscordIcon from '~/assets/images/external/discord.svg'
 
 import NotificationIcon from '~/assets/images/sidebar/notifications.svg'
 import SettingsIcon from '~/assets/images/sidebar/settings.svg'
@@ -520,7 +477,7 @@ const messages = defineMessages({
 const footerMessages = defineMessages({
   openSource: {
     id: 'layout.footer.open-source',
-    defaultMessage: 'Modrinth is <github-link>open source</github-link>.',
+    defaultMessage: 'Bedrinth is <github-link>open source</github-link>.'
   },
   companyTitle: {
     id: 'layout.footer.company.title',

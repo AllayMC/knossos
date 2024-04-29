@@ -25,13 +25,14 @@
             <InfoIcon />
           </NavStackItem>
 
-          <h3>Rewards Program</h3>
-          <NavStackItem link="/legal/cmp" label="Rewards Program Terms">
-            <CurrencyIcon />
-          </NavStackItem>
-          <NavStackItem link="/legal/cmp-info" label="Rewards Program Info">
-            <InfoIcon />
-          </NavStackItem>
+          <!--          todo support rewards program-->
+          <!--          <h3>Rewards Program</h3>
+                    <NavStackItem link="/legal/cmp" label="Rewards Program Terms">
+                      <CurrencyIcon />
+                    </NavStackItem>
+                    <NavStackItem link="/legal/cmp-info" label="Rewards Program Info">
+                      <InfoIcon />
+                    </NavStackItem>-->
         </NavStack>
       </aside>
     </div>
@@ -43,13 +44,12 @@
 
 <script setup>
 import {
-  InfoIcon,
+  CopyrightIcon,
   HeartHandshakeIcon,
+  InfoIcon,
   LockIcon,
   ScaleIcon,
-  ShieldIcon,
-  CurrencyIcon,
-  CopyrightIcon,
+  ShieldIcon
 } from 'omorphia'
 import NavStack from '~/components/ui/NavStack.vue'
 import NavStackItem from '~/components/ui/NavStackItem.vue'

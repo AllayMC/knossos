@@ -20,6 +20,7 @@ html {
   --color-bg-inverted: var(--color-text);
 
   --color-brand-green: #00af5c;
+  --color-brand-blue: #02dac7;
   --color-brand: var(--color-brand-green);
   --color-brand-highlight: rgba(0, 175, 92, 0.25);
   --color-brand-shadow: rgba(0, 175, 92, 0.7);
@@ -158,12 +159,14 @@ html {
   --color-special-orange: #ffa347;
   --color-special-green: var(--color-brand-green);
   --color-special-blue: #4f9cff;
+  --color-special-bedrock: #613f30;
   --color-special-purple: #c78aff;
   --color-special-gray: #9fa4b3;
 
   --color-red-bg: rgba(255, 74, 110, 0.2);
 
   --color-brand-green: #1bd96a;
+  --color-brand-blue: #26b8ac;
   --color-brand: var(--color-brand-green);
   --color-brand-highlight: rgba(27, 217, 106, 0.25);
   --color-brand-shadow: rgba(27, 217, 106, 0.7);

@@ -7,7 +7,7 @@
     }"
   >
     <Head>
-      <Title>Search {{ projectType.display }}s - Modrinth</Title>
+      <Title>Search {{ projectType.display }}s - Bedrinth</Title>
     </Head>
     <aside
       :class="{
@@ -104,29 +104,30 @@
               :collapsing-toggle-style="true"
             />
           </section>
-          <section v-if="projectType.id === 'plugin'" aria-label="Platform loader filters">
-            <h3
-              v-if="
-                tags.loaders.filter((x) => x.supported_project_types.includes(projectType.actual))
-                  .length > 0
-              "
-              class="sidebar-menu-heading"
-            >
-              Proxies
-            </h3>
-            <SearchFilter
-              v-for="loader in tags.loaders.filter((x) =>
-                tags.loaderData.pluginPlatformLoaders.includes(x.name)
-              )"
-              :key="loader.name"
-              ref="platformFilters"
-              :active-filters="orFacets"
-              :display-name="$formatCategory(loader.name)"
-              :facet-name="`categories:'${encodeURIComponent(loader.name)}'`"
-              :icon="loader.icon"
-              @toggle="toggleOrFacet"
-            />
-          </section>
+          <!--          todo support proxy-->
+          <!--          <section v-if="projectType.id === 'plugin'" aria-label="Platform loader filters">
+                      <h3
+                        v-if="
+                          tags.loaders.filter((x) => x.supported_project_types.includes(projectType.actual))
+                            .length > 0
+                        "
+                        class="sidebar-menu-heading"
+                      >
+                        Proxies
+                      </h3>
+                      <SearchFilter
+                        v-for="loader in tags.loaders.filter((x) =>
+                          tags.loaderData.pluginPlatformLoaders.includes(x.name)
+                        )"
+                        :key="loader.name"
+                        ref="platformFilters"
+                        :active-filters="orFacets"
+                        :display-name="$formatCategory(loader.name)"
+                        :facet-name="`categories:'${encodeURIComponent(loader.name)}'`"
+                        :icon="loader.icon"
+                        @toggle="toggleOrFacet"
+                      />
+                    </section>-->
           <section
             v-if="!['resourcepack', 'plugin', 'shader', 'datapack'].includes(projectType.id)"
             aria-label="Environment filters"
@@ -149,23 +150,10 @@
               <ServerIcon aria-hidden="true" />
             </SearchFilter>
           </section>
-          <h3 class="sidebar-menu-heading">Minecraft versions</h3>
-          <Checkbox
-            v-model="showSnapshots"
-            label="Show all versions"
-            description="Show all versions"
-            style="margin-bottom: 0.5rem"
-            :border="false"
-          />
+          <h3 class="sidebar-menu-heading">Api versions</h3>
           <multiselect
             v-model="selectedVersions"
-            :options="
-              showSnapshots
-                ? tags.gameVersions.map((x) => x.version)
-                : tags.gameVersions
-                    .filter((it) => it.version_type === 'release')
-                    .map((x) => x.version)
-            "
+            :options="apiOptions"
             :multiple="true"
             :searchable="true"
             :show-no-results="false"
@@ -188,7 +176,6 @@
       </section>
     </aside>
     <section class="normal-page__content">
-      <Promotion />
       <div class="card search-controls">
         <div class="search-filter-container">
           <button
@@ -316,7 +303,6 @@
 </template>
 <script setup>
 import { Multiselect } from 'vue-multiselect'
-import { Promotion } from 'omorphia'
 import ProjectCard from '~/components/ui/ProjectCard.vue'
 import Pagination from '~/components/ui/Pagination.vue'
 import SearchFilter from '~/components/ui/search/SearchFilter.vue'
@@ -354,7 +340,7 @@ const sortTypes = shallowReadonly([
   { display: 'Download count', name: 'downloads' },
   { display: 'Follow count', name: 'follows' },
   { display: 'Recently published', name: 'newest' },
-  { display: 'Recently updated', name: 'updated' },
+  { display: 'Recently updated', name: 'updated' }
 ])
 const sortType = ref({ display: 'Relevance', name: 'relevance' })
 const maxResults = ref(20)
@@ -369,10 +355,28 @@ const description = computed(
     `Search and browse thousands of Minecraft ${projectType.value.display}s on Modrinth with instant, accurate search results. Our filters help you quickly find the best Minecraft ${projectType.value.display}s.`
 )
 
+const apiOptions = computed(
+  () => {
+    if (orFacets.value[0]) {
+      const regex = /categories:'([^']+)'/
+      const match = orFacets.value[0].match(regex)
+      const target = match ? match[1] : ''
+      if (tags.value.loaderVersions[target]) {
+        return showSnapshots
+          ? tags.value.loaderVersions[target].map((x) => x.version)
+          : tags.value.loaderVersions[target]
+            .filter((it) => it.version_type === 'release')
+            .map((x) => x.version)
+      }
+    }
+    return []
+  }
+)
+
 useSeoMeta({
   description,
   ogTitle,
-  ogDescription: description,
+  ogDescription: description
 })
 
 if (route.query.q) {
@@ -433,7 +437,7 @@ const noLoad = ref(false)
 const {
   data: rawResults,
   refresh: refreshSearch,
-  pending: searchLoading,
+  pending: searchLoading
 } = useLazyFetch(
   () => {
     const config = useRuntimeConfig()
@@ -497,13 +501,13 @@ const {
           if (includesClient) {
             environmentFacets = [
               ['client_side:optional', 'client_side:required'],
-              ['server_side:optional', 'server_side:unsupported'],
+              ['server_side:optional', 'server_side:unsupported']
             ]
           }
           if (includesServer) {
             environmentFacets = [
               ['client_side:optional', 'client_side:unsupported'],
-              ['server_side:optional', 'server_side:required'],
+              ['server_side:optional', 'server_side:required']
             ]
           }
         }
@@ -537,7 +541,7 @@ const {
     transform: (hits) => {
       noLoad.value = false
       return hits
-    },
+    }
   }
 )
 
@@ -668,39 +672,9 @@ function toggleFacet(elementName, doNotSendRequest = false) {
 }
 
 function toggleOrFacet(elementName, doNotSendRequest) {
-  const index = orFacets.value.indexOf(elementName)
-  if (index !== -1) {
-    orFacets.value.splice(index, 1)
-  } else {
-    if (elementName === 'categories:purpur') {
-      if (!orFacets.value.includes('categories:paper')) {
-        orFacets.value.push('categories:paper')
-      }
-      if (!orFacets.value.includes('categories:spigot')) {
-        orFacets.value.push('categories:spigot')
-      }
-      if (!orFacets.value.includes('categories:bukkit')) {
-        orFacets.value.push('categories:bukkit')
-      }
-    } else if (elementName === 'categories:paper') {
-      if (!orFacets.value.includes('categories:spigot')) {
-        orFacets.value.push('categories:spigot')
-      }
-      if (!orFacets.value.includes('categories:bukkit')) {
-        orFacets.value.push('categories:bukkit')
-      }
-    } else if (elementName === 'categories:spigot') {
-      if (!orFacets.value.includes('categories:bukkit')) {
-        orFacets.value.push('categories:bukkit')
-      }
-    } else if (elementName === 'categories:waterfall') {
-      if (!orFacets.value.includes('categories:bungeecord')) {
-        orFacets.value.push('categories:bungeecord')
-      }
-    }
-    orFacets.value.push(elementName)
-  }
-
+  orFacets.value = []
+  orFacets.value.push(elementName)
+  selectedVersions.value = []
   if (!doNotSendRequest) {
     onSearchChange(1)
   }
@@ -740,7 +714,7 @@ const previousMaxResults = ref(20)
 const maxResultsForView = ref({
   list: [5, 10, 15, 20, 50, 100],
   grid: [6, 12, 18, 24, 48, 96],
-  gallery: [6, 10, 16, 20, 50, 100],
+  gallery: [6, 10, 16, 20, 50, 100]
 })
 
 function onMaxResultsChange(newPageNumber) {
@@ -760,7 +734,7 @@ function setClosestMaxResults() {
   const maxResultsOptions = maxResultsForView.value[view] ?? [20]
   const currentMax = maxResults.value
   if (!maxResultsOptions.includes(currentMax)) {
-    maxResults.value = maxResultsOptions.reduce(function (prev, curr) {
+    maxResults.value = maxResultsOptions.reduce(function(prev, curr) {
       return Math.abs(curr - currentMax) <= Math.abs(prev - currentMax) ? curr : prev
     })
   }
@@ -788,6 +762,7 @@ function setClosestMaxResults() {
 
   // Hide on mobile unless open
   display: none;
+
   &.open {
     display: block;
   }
