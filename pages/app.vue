@@ -1,7 +1,14 @@
 <script setup>
-import { TrashIcon, SearchIcon, BoxIcon, SendIcon, EditIcon, DownloadIcon } from 'omorphia'
+import {
+  TrashIcon,
+  SearchIcon,
+  BoxIcon,
+  SendIcon,
+  EditIcon,
+  DownloadIcon,
+  LinkIcon,
+} from 'omorphia'
 import Avatar from '~/components/ui/Avatar.vue'
-import homepageProjects from '~/generated/homepage.json'
 import LogoAnimated from '~/components/brand/LogoAnimated.vue'
 import Badge from '~/components/ui/Badge.vue'
 import PrismIcon from '~/assets/images/external/prism.svg'
@@ -9,7 +16,6 @@ import ATLauncher from '~/assets/images/external/atlauncher.svg'
 import CurseForge from '~/assets/images/external/curseforge.svg'
 import Checkbox from '~/components/ui/Checkbox.vue'
 
-const val = Math.ceil(homepageProjects.length / 6)
 const os = ref(null)
 const macValue = ref(null)
 const downloadWindows = ref(null)
@@ -19,6 +25,7 @@ const windowsLink = ref(null)
 const linuxLinks = {
   appImage: null,
   deb: null,
+  thirdParty: 'https://support.modrinth.com/en/articles/9298760',
 }
 const macLinks = {
   appleSilicon: null,
@@ -27,17 +34,23 @@ const macLinks = {
 
 let downloadLauncher
 
-const rows = shallowRef([
-  homepageProjects.slice(0, val),
-  homepageProjects.slice(val, val * 2),
-  homepageProjects.slice(val * 2, val * 3),
-  homepageProjects.slice(val * 3, val * 4),
-  homepageProjects.slice(val * 4, val * 5),
+const [{ data: rows }, { data: launcherUpdates }] = await Promise.all([
+  useAsyncData('projects', () => useBaseFetch('projects_random?count=40'), {
+    transform: (homepageProjects) => {
+      const val = Math.ceil(homepageProjects.length / 6)
+      return [
+        homepageProjects.slice(0, val),
+        homepageProjects.slice(val, val * 2),
+        homepageProjects.slice(val * 2, val * 3),
+        homepageProjects.slice(val * 3, val * 4),
+        homepageProjects.slice(val * 4, val * 5),
+      ]
+    },
+  }),
+  await useAsyncData('launcherUpdates', () =>
+    $fetch('https://launcher-files.modrinth.com/updates.json')
+  ),
 ])
-
-const { data: launcherUpdates } = await useAsyncData('launcherUpdates', () =>
-  $fetch('https://launcher-files.modrinth.com/updates.json')
-)
 
 macLinks.appleSilicon = launcherUpdates.value.platforms['darwin-aarch64'].install_urls[0]
 macLinks.intel = launcherUpdates.value.platforms['darwin-x86_64'].install_urls[0]
@@ -867,6 +880,10 @@ useSeoMeta({
             <a :href="linuxLinks.deb" download="">
               <DownloadIcon />
               <span> Download the Deb </span>
+            </a>
+            <a :href="linuxLinks.thirdParty" download="">
+              <LinkIcon />
+              <span> Third-party packages </span>
             </a>
           </div>
         </div>

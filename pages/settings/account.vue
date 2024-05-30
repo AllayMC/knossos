@@ -393,6 +393,11 @@
 import {
   CheckIcon,
   EditIcon,
+  SaveIcon,
+  TrashIcon,
+  PlusIcon,
+  SettingsIcon,
+  XIcon,
   ExternalIcon,
   LeftArrowIcon,
   PlusIcon,

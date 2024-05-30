@@ -1,7 +1,7 @@
 <template>
   <div class="markdown-body">
     <h1>Rewards Program Information</h1>
-    <p><em>Last modified: August 9, 2023</em></p>
+    <p><em>Last modified: May 13, 2024</em></p>
     <p>
       This page was created for transparency for how the rewards program works on Bedrinth. Feel
       free to join our Discord or email
@@ -56,9 +56,8 @@
       banned from using Bedrinth's services.
     </p>
     <p>
-      Currently, there is no way to view page views or in-app downloads information for your
-      projects. We are currently working on an analytics dashboard which will display this
-      information.
+      You can view your page views and project downloads in your
+      <a href="https://modrinth.com/dashboard/analytics">analytics dashboard</a>.
     </p>
     <h2>Frequently Asked Questions</h2>
     <p>
